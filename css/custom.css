@@ -21,10 +21,8 @@
   --color-shipping: #fef9ff;
   --color-qc: #ffeded;
   --color-link: #4a75ff;
-  --color-nav-button: #1e7296;
-  --color-kms-nav-button: #6c5f15;
-  --color-nav-button-hover: #30bbf7;
-  --color-kms-nav-button-hover: #ccb326;
+  --color-nav-button: #6c5f15;
+  --color-nav-button-hover: #ccb326;
   --color-link-hover: #a4b9ff;
   --color-background-stripe: #efefef;
 
@@ -51,8 +49,7 @@
   --full-quarter-rem: 1.25rem;
   --full-half-rem: 1.5rem;
 
-  --color-navbar-background: #000000;
-  --color-kms-navbar-background: #68095e;
+  --color-navbar-background: #095d68;
   --navbar-height: 3rem;
   --navbar-link-color: #a0a0a0;
   --navbar-link-hover-color: #f0f0f0;

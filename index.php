@@ -10,9 +10,9 @@
 
 <!-- Custom CSS -->
 	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="css/loading-animation.css">
 	<link rel="stylesheet" href="css/navbar.css">
-	<link rel="stylesheet" href="css/pagination.css">
+	<!-- <link rel="stylesheet" href="css/loading-animation.css">
+	<link rel="stylesheet" href="css/pagination.css"> -->
 
 </head>
 
@@ -41,12 +41,12 @@
 	<script src="js/variables.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/custom.js"></script>
-	<script src="js/promises.js"></script>
+	<!-- <script src="js/promises.js"></script>
 	<script src="js/vinCheckIn.js"></script>
 	<script src="js/keyCheckIn.js"></script>
 	<script src="js/keyCheckOut.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/kmsAudit.js"></script>
-	<script src="js/dashboard.js"></script>
+	<script src="js/dashboard.js"></script> -->
 </body>
 </html>
