@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('.nav-logo').on('click', function() {
 		loadPage($(this).data('page'));
-		loadPage('kms_nav', g_NAV);
+		loadPage('nav', g_NAV);
 	});
 
 	loadPage('index');
@@ -34,7 +34,7 @@ function pageCheck(param_page) {
 	clearTimer(g_KEY_RESET_TIMER);
 
 	switch(param_page) {
-		case "kmsAudit":
+		case "userSearch":
 			$('#vinAudit').focus();
 			setKeyEvents(param_page, 'vinAudit');
 			break;
