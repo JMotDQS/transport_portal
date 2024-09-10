@@ -35,8 +35,6 @@ function pageCheck(param_page) {
 
 	switch(param_page) {
 		case "userSearch":
-			$('#vinAudit').focus();
-			setKeyEvents(param_page, 'vinAudit');
 			break;
 
 		case "vinCheckIn":
@@ -112,6 +110,13 @@ function reverseEntities(param_string) {
 		}
 		return temp_string;
 	}
+}
+
+function userSearch(e) {
+	e.preventDefault;
+	console.log("search");
+	console.log($('#nav-search-field').val());
+	return false;
 }
 
 function feedBackColoring(param_ele, param_color = 'default') {

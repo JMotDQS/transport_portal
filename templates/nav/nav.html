@@ -2,11 +2,11 @@
 	<!-- <li><a class="navbar-link navbar-search" data-page="userSearch">User Search</a></li> -->
 	<li>
 		<div class="search-container">
-			<form action="/action_page.php">
-				<input type="text" placeholder="Search.." name="search">
-				<button type="submit"><i class="fa fa-search"></i></button>
+			<form class="nav-search-form" method="POST" onsubmit="return userSearch(event)">
+				<input id="nav-search-field" type="text" placeholder="User Search" name="nav-search-field">
+				<div class="nav-search-button" onclick="userSearch(this)"><i class="fa fa-search"></i></div>
 			</form>
-			</div>
+		</div>
 	</li>
 	<li><a class="navbar-link" data-page="itemAssociation">Item Association</a></li>
 </ul>

@@ -74,6 +74,27 @@ header {
 .dropdown-menu:hover {
 	display: block;
 }
+
+nav input[type=text] {
+	padding: 6px;
+	font-size: var(--three-quarter-rem);
+	border: none;
+	border-top-left-radius: var(--half-rem);
+	border-bottom-left-radius: var(--half-rem);
+}
+
+.nav-search-button {
+	float: right;
+	padding: 6px 10px;
+	margin-right: 16px;
+	background: #ddd;
+	font-size: var(--three-quarter-rem);
+	border: none;
+	border-top-right-radius: var(--half-rem);
+	border-bottom-right-radius: var(--half-rem);
+	cursor: pointer;
+}
+
 /*.dropdown-menu:hover {
 display: block;
 }*/
