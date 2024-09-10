@@ -41,8 +41,8 @@
 	<script src="js/variables.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/custom.js"></script>
-	<!-- <script src="js/promises.js"></script>
-	<script src="js/vinCheckIn.js"></script>
+	<script src="js/promises.js"></script>
+	<!-- <script src="js/vinCheckIn.js"></script>
 	<script src="js/keyCheckIn.js"></script>
 	<script src="js/keyCheckOut.js"></script>
 	<script src="js/search.js"></script>

@@ -116,6 +116,26 @@ function userSearch(e) {
 	e.preventDefault;
 	console.log("search");
 	console.log($('#nav-search-field').val());
+	userSearchPromise('userSearch', dataCleanUp($('#nav-search-field').val())).then(function(resolve) {
+		console.log("userSearchPromise:Success");
+		console.log("g_USER_SEARCH.length:", g_USER_SEARCH.length);
+		
+		/*if(resolve.length < 1) {
+			feedBackColoring('#vin-scan-feedback', 'red');
+			$('#vin-scan-feedback').html(`VIN:&nbsp;${param_vin}&nbsp;already exists!`);
+		} else {
+			feedBackColoring('#vin-scan-feedback', 'green');
+			$('#vin-scan-feedback').html(`VIN:&nbsp;${param_vin}&nbsp;recorded.`);
+		}*/
+
+	}).catch(function(reject) {
+		console.log("Fail");
+	}).finally(function() {
+		console.log("Moving On.");
+	})
+
+
+
 	return false;
 }
 
@@ -147,13 +167,6 @@ function feedBackColoring(param_ele, param_color = 'default') {
 	}
 }
 
-function generateRandomString(param_seed = 5) {
-	/* 65 is the ASCII code for a capital 'A'. This goes through to 90 which is a capital 'Z' */
-	var asciiCodeStart = 65;
-	String.fromCharCode(asciiCodeStart + Math.floor(Math.random() * 26))
-	return String.fromCharCode(asciiCodeStart + Math.floor(Math.random() * 26)) + "-" + Math.random().toString(36).substring(2, param_seed).toUpperCase();
-}
-
 function toggleDisabled(param_ele, param_disabled) {
     $(param_ele).prop('disabled', param_disabled);
 }
@@ -172,33 +185,4 @@ function setKeyEvents(param_page, param_element, param_multiplier = 1) {
 
 function clearTimer(param_timer) {
 	window.clearTimeout(param_timer); // prevent errant multiple timeouts from being generated
-}
-
-function consoleReporting(param_message='No Message') {
-	//console.log(param_message);
-}
-
-function vinInventoryList() {
-	vinInventoryListPromise('current_vin_slot_csv_export').then(function(resolve) {
-		alert("CSV created");
-    }).catch(function(reject) {
-		alert("Export Failed");
-    }).finally(function() {
-
-	})
-}
-
-function cleanVIN(param_vin_scan) {
-	var temp_vin
-	if (param_vin_scan.charAt(0).toUpperCase() === "I") {
-		temp_vin = param_vin_scan.substring(1);
-	} else {
-		temp_vin = param_vin_scan;
-	}
-
-	if(parseInt(temp_vin.length) === g_VIN_LENGTH) {
-		return temp_vin.toUpperCase();
-	} else {
-		return false;
-	}
 }
