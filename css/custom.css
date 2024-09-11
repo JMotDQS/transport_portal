@@ -3,6 +3,8 @@
 	Media queries are for styling on larger screens.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
 *, *::before, *::after {
 	box-sizing: border-box;
 	margin: 0;
@@ -42,6 +44,12 @@
 	--color-loc-st: #c2f704;
 	--color-loc-fj: #9a04f7;
 
+	--color-dark: #000137;
+	--color-medium-dark: #02055a;
+	--color-medium-light: #021988;
+	--color-light: #253da1;
+	--color-extra-light: hsla(228, 63%, 70%, 1);
+
 	--quarter-rem: .25rem;
 	--half-rem: .5rem;
 	--three-quarter-rem: .75rem;
@@ -73,14 +81,9 @@
 
 body {
 	background-color: var(--color-page-background);
-	font-size: var(--full-rem);
-	font-family: system-ui, sans-serif;
+	font-size: var(--three-quarter-rem);
+	/*font-family: system-ui, sans-serif;*/
 	/* font-family: sans-serif; */
-}
-
-#app {
-	padding: var(--quarter-rem);
-	margin: 0 calc(var(--full-rem) * 2);
 }
 
 ul {
@@ -92,14 +95,6 @@ a {
 	color: #000000;
 }
 
-h2 {
-	margin-block-end: var(--half-rem);
-}
-
-p {
-	padding: calc(var(--quarter-rem) / 2);
-}
-
 button {
 	padding-inline: var(--half-rem);
 }
@@ -109,18 +104,12 @@ input {
 	padding-inline: var(--quarter-rem);
 }
 
-.shell {
-	margin: 0;
-	padding: 0;
-}
-
-.cont-p {
-	padding: 0px;
-}
-
 .grid-container {
 	display: grid;
-	gap: var(--quarter-rem);
+	gap: var(--half-rem);
+	padding: var(--quarter-rem);
+	border-radius: calc(var( --navbar-corner-radius) / 4);
+	background-color: #7a7a7a;
 }
 
 .fullwidth {
@@ -133,6 +122,109 @@ input {
 	margin-block-start: var(--half-rem);
 	height: 1px;
 }
+
+.card {
+	border: 1px solid var(--color-light);
+	border-radius: var(--half-rem);
+	background-color: var(--color-page-background);
+	padding-inline: var(--full-rem);
+	padding-block: var(--half-rem);
+	margin-block-end: var(--half-rem);
+	width: 75%;
+	margin-inline: auto;
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+}
+.card-titles {
+	font-size: var(--three-quarter-rem);
+	font-weight: 300;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	margin-bottom: var(--quarter-rem);
+}
+.card-data {
+	font-size: var(--three-quarter-rem);
+	font-weight: 600;
+}
+
+.search-results {
+	margin-block-start: var(--half-rem);
+	padding-inline: var(--full-rem);
+	text-align: center;
+}
+
+.modal-print {
+	font-size: var(--full-quarter-rem);
+	cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: calc(var(--full-rem) * 2.5);
+	height: var(--full-rem);
+}
+
+/* Hide default HTML checkbox */
+.switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--color-medium-dark);
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+.slider:before {
+	position: absolute;
+	content: "";
+	height: var(--full-rem);
+	width: var(--full-rem);
+	left: 0px;
+	bottom: 0px;
+	background-color: white;
+	opacity: .875;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+input:checked + .slider {
+	background-color: var(--color-extra-light);
+}
+input:focus + .slider {
+	box-shadow: 0 0 3px var(--color-dark);
+}
+input:checked + .slider:before {
+	transform: translateX(calc( var(--full-rem) * 1.5 ));
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: var(--full-rem);
+	outline: 2px solid var(--color-dark);
+}
+.slider.round:before {
+	border-radius: var(--full-rem);
+}
+
+.user-inactive {
+	font-weight: 600;
+	color: red;
+}
+
+
 
 .invisible {
 	visibility: hidden;
