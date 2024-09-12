@@ -1,4 +1,6 @@
 /***** Global Use Variables */
+const myModal = document.querySelector('.g_dialog');
+
 var g_TIMER;
 var g_KEY_RESET_TIMER;
 var g_USER_SEARCH = [];

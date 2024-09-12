@@ -86,6 +86,14 @@ body {
 	/* font-family: sans-serif; */
 }
 
+#app {
+	text-align: center;
+}
+.app-feedback {
+	font-weight: 600;
+	font-size: var(--full-rem);
+}
+
 ul {
 	list-style-type: none;
 }

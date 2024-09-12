@@ -11,6 +11,7 @@
 	<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/navbar.css">
+		<link rel="stylesheet" href="css/modal.css">
 		<!-- <link rel="stylesheet" href="css/loading-animation.css">
 		<link rel="stylesheet" href="css/pagination.css"> -->
 
@@ -27,9 +28,39 @@
 		<div class="search-results"></div>
 
 		<dialog id="g_dialog" class="g_dialog">
-			<h2>My Dialog</h2>
-			<div>Here is some stuff...</div>
-			<button onClick="toggleModal()">Close</button>
+			<header class="modal-header">
+				<div id="title">
+					<h3>Add User</h3>
+					<!-- <p>all fields required</p> -->
+				</div>
+				<div class="modal-save invisible" onclick="addUser()">
+					<i class="far fa-save"></i>
+				</div>
+				<div class="modal-close" onclick="closeModal()">
+					<i class="far fa-window-close"></i>
+				</div>
+			</header>
+			<div class="modal-grid">
+				<p class="fullwidth">all fields required</p>
+				<div class="modal-form-element">
+					<!--<label for="first_name">First Name:</label>-->
+					<input type="text" id="first_name" name="first_name" placeholder="First Name">
+				</div>
+				<div class="modal-form-element">
+					<!--<label for="last_name">Last Name:</label>-->
+					<input type="text" id="last_name" name="last_name" placeholder="Last Name">
+				</div>
+				<div class="modal-form-element">
+					<!--<label for="role" style="display:block;">Role:</label>-->
+					<select name="company" id="company">
+						<option selected="true" disabled="disabled" value="">Please Choose Company</option>	
+						<option value="Security Guard">Security Guard</option>
+						<option value="Security Supervisor">Security Supervisor</option>
+						<option value="Admin" disabled="disabled">Admin</option>
+						<option value="Driveaway">Driveaway</option>
+					</select>
+				</div>
+			</div>
 		</dialog>
 
 	<!-- JQuery CDN -->
@@ -43,6 +74,7 @@
 		<script src="js/index.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/promises.js"></script>
+		<script src="js/modal.js"></script>
 		<!-- <script src="js/vinCheckIn.js"></script>
 		<script src="js/keyCheckIn.js"></script>
 		<script src="js/keyCheckOut.js"></script>
