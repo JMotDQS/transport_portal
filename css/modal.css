@@ -57,6 +57,10 @@
   .modal-close {
 	justify-self: flex-end;
   }
+  .modal-print {
+	font-size: var(--full-quarter-rem);
+	cursor: pointer;
+}
 
 .modal-edit:hover,
 .modal-edit:focus,

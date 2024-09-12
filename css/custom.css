@@ -164,11 +164,6 @@ input {
 	text-align: center;
 }
 
-.modal-print {
-	font-size: var(--full-quarter-rem);
-	cursor: pointer;
-}
-
 /* The switch - the box around the slider */
 .switch {
 	position: relative;
@@ -231,8 +226,6 @@ input:checked + .slider:before {
 	font-weight: 600;
 	color: red;
 }
-
-
 
 .invisible {
 	visibility: hidden;

@@ -52,13 +52,7 @@
 				</div>
 				<div class="modal-form-element">
 					<!--<label for="role" style="display:block;">Role:</label>-->
-					<select name="company" id="company">
-						<option selected="true" disabled="disabled" value="">Please Choose Company</option>	
-						<option value="Security Guard">Security Guard</option>
-						<option value="Security Supervisor">Security Supervisor</option>
-						<option value="Admin" disabled="disabled">Admin</option>
-						<option value="Driveaway">Driveaway</option>
-					</select>
+					<select name="company" id="company"></select>
 				</div>
 			</div>
 		</dialog>

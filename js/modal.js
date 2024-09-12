@@ -2,7 +2,7 @@ var flag_array = [];
 var new_user_array = [];
 
 function openModal(param_search_string) {
-	//resetModalForm()
+	resetModalForm()
 
     var temp_title = `<h3>${param_search_string}</h3><h2>Add User</h2><p>all fields required</p>`;
     $('#title').html(temp_title);
@@ -14,7 +14,7 @@ function openModal(param_search_string) {
 			flag_array['first'] = false;
 		}
 
-		//checkInput();
+		checkInput();
 	});
 
 	$('#last_name').keyup( () => {
@@ -24,7 +24,7 @@ function openModal(param_search_string) {
 			flag_array['last'] = false;
 		}
 
-		//checkInput();
+		checkInput();
 	});
 
 	$('#role').change( () => {

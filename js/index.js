@@ -4,8 +4,22 @@ $(document).ready(function() {
 		loadPage('nav', g_NAV);
 	});
 
-	loadPage('index');
-	loadPage('nav', g_NAV);
+	getCompaniesPromise().then(function(resolve) {
+		console.log("getCompaniesPromise:Success");
+
+		var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
+		for(i = 0; i < g_COMPANIES.length; i++) {
+			temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
+		}
+		$('#company').html(temp_html);
+
+		loadPage('index');
+		loadPage('nav', g_NAV);
+	}).catch(function(reject) {
+		console.log("Fail");
+	}).finally(function() {
+		console.log("Moving On.");
+	});
 });
 
 function loadPage(param_template, param_element = 'app') {
@@ -116,6 +130,7 @@ function userSearch(e) {
 	e.preventDefault;
 	var temp_html = '';	
 
+	/*** If search is done with blank search field ***/
 	if($('#nav-search-field').val() == '') {
 		temp_html = `Please enter a name to search for.`;
 		$('.search-results').html(temp_html);
@@ -131,6 +146,7 @@ function userSearch(e) {
 			console.log("userSearchPromise:Success");
 			temp_html = '';
 			
+			/*** If search result is empty ***/
 			if(g_USER_SEARCH.length == 0) {
 				temp_html = 'No results found for <b><i>'+ $('#nav-search-field').val() + '</i></b>';
 				$('.search-results').html('');
@@ -145,15 +161,11 @@ function userSearch(e) {
 					temp_html += `<div class="card" data-id='${g_USER_SEARCH[i]['pk_id']}'>`;
 						temp_html += `<div class="card-grid card-titles">`;
 								temp_html += `<div>Last, First Name</div>`;
-								//temp_html += `<div>Email</div>`;
 								temp_html += `<div>Badge</div>`;
-								//temp_html += `<div>Role</div>`;
-								//temp_html += `<div class="active-label" id="active-label_${g_USER_SEARCH[i]['pk_id']}">Deactivate</div>`;
 								temp_html += `<div>Print QR</div>`;
 						temp_html += `</div>`;
 						temp_html += `<div class="card-grid card-data">`;
 							temp_html += `<div>${g_USER_SEARCH[i]['last_name']}, ${g_USER_SEARCH[i]['first_name']}</div>`;
-							//temp_html += `<div>${g_USER_SEARCH[i]['email']}</div>`;
 
 							if(g_USER_SEARCH[i]['badge_id'] == '' || g_USER_SEARCH[i]['badge_id'] == null) {
 								g_USER_SEARCH[i]['badge_id'] = null;
@@ -163,30 +175,6 @@ function userSearch(e) {
 							} else {
 								temp_html += `<div>${g_USER_SEARCH[i]['badge_id']}</div>`;
 							}
-
-							/*temp_html += `<div>`;
-								temp_html += `<select name="roles_${g_USER_SEARCH[i]['pk_id']}" id="roles_${g_USER_SEARCH[i]['pk_id']}" onchange="updateRole(this.id)">`;
-									temp_html += `<option value="Security Guard">Security Guard</option>`;
-									temp_html += `<option value="Security Supervisor">Security Supervisor</option>`;
-									//temp_html += `<option value="Recruiter">Recruiter</option>`;
-									//temp_html += `<option value="HR">HR</option>`;
-
-									if(g_USER_SEARCH[i]['role'] == 'Admin') {
-										temp_html += `<option value="Admin">Admin</option>`;
-									} else {
-										temp_html += `<option value="Admin" disabled="disabled">Admin</option>`;
-									}
-									
-									temp_html += `<option value="Driveaway">Driveaway</option>`;
-								temp_html += `</select>`;
-							temp_html += `</div>`;*/
-
-							/*temp_html += `<div>`;
-								temp_html += `<label class="switch">`;
-									temp_html += `<input type="checkbox" id="dnr_${g_USER_SEARCH[i]['pk_id']}" name="dnr_${g_USER_SEARCH[i]['pk_id']}" onClick="toggleClicked(this.id)">`;
-									temp_html += `<span class="slider round"></span>`;
-								temp_html += `</label>`;
-							temp_html += `</div>`;*/
 
 							temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" onclick="printUser(this)">`;
 								temp_html += `<i class="fas fa-print"></i>`;
