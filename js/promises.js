@@ -79,6 +79,8 @@ function addUserPromise(param_file) {
 
 			success: function (data) {
 				console.log(data);
+				$('#nav-search-field').val(data);
+				userSearch(click_event);
 				resolve(true);
 			},
 

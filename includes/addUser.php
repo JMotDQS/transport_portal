@@ -52,6 +52,6 @@
 
 	$close_success = sqlsrv_close($conn);
 	if($close_success) {
-		echo json_encode(true);
+		echo json_encode($new_badge_num);
 	}
 ?>
