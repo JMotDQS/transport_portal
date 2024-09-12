@@ -11,7 +11,7 @@ $(document).ready(function() {
 		for(i = 0; i < g_COMPANIES.length; i++) {
 			temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
 		}
-		$('#company').html(temp_html);
+		$('#modal_company').html(temp_html);
 
 		loadPage('index');
 		loadPage('nav', g_NAV);

@@ -7,8 +7,8 @@ function openModal(param_search_string) {
     var temp_title = `<h3>${param_search_string}</h3><h2>Add User</h2><p>all fields required</p>`;
     $('#title').html(temp_title);
 
-	$('#first_name').keyup( () => {
-		if ($('#first_name').val().length > 0) {
+	$('#modal_first_name').keyup( () => {
+		if ($('#modal_first_name').val().length > 0) {
 			flag_array['first'] = true;
 		} else {
 			flag_array['first'] = false;
@@ -17,8 +17,8 @@ function openModal(param_search_string) {
 		checkInput();
 	});
 
-	$('#last_name').keyup( () => {
-		if ($('#last_name').val().length > 0) {
+	$('#modal_last_name').keyup( () => {
+		if ($('#modal_last_name').val().length > 0) {
 			flag_array['last'] = true;
 		} else {
 			flag_array['last'] = false;
@@ -27,11 +27,11 @@ function openModal(param_search_string) {
 		checkInput();
 	});
 
-	$('#role').change( () => {
-		if ($('#role').val() == null) {
-			flag_array['role'] = false;
+	$('#modal_company').change( () => {
+		if ($('#modal_company').val() == null) {
+			flag_array['company'] = false;
 		} else {
-			flag_array['role'] = true;
+			flag_array['company'] = true;
 		}
 
 		checkInput();
@@ -46,17 +46,11 @@ function closeModal() {
 }
 
 function addUser() {
-	//myModal.close();
-	$('#first_name').prop('disabled', true);
-	$('#last_name').prop('disabled', true);
-	$('#role').prop('disabled', true);
+	$('#modal_first_name').prop('disabled', true);
+	$('#modal_last_name').prop('disabled', true);
+	$('#modal_company').prop('disabled', true);
 
-	addUserPromise().then(function(resolve) {
-		var temp_html = ``;
-		temp_html += `<p>First Name:&nbsp;${new_user_array[0]['first_name']}</p>`;
-		temp_html += `<p>Last Name:&nbsp;${new_user_array[0]['last_name']}</p>`;
-		temp_html += `<p>Badge ID:&nbsp;${new_user_array[0]['badge']}</p>`;
-		$('app').html(temp_html);
+	addUserPromise('addUser').then(function(resolve) {
 		closeModal()
 	}).catch(function(reject) {
 		//console.log("Search Loaded!");
@@ -68,7 +62,7 @@ function addUser() {
 function checkInput() {
 	$('.modal-save').addClass('invisible');
 
-	if(flag_array['first'] && flag_array['last'] && flag_array['role']) {
+	if(flag_array['first'] && flag_array['last'] && flag_array['company']) {
 		$('.modal-save').removeClass('invisible');
 	}
 }
@@ -88,19 +82,19 @@ function generateNewBadge(ele) {
 function resetModalForm() {
 	flag_array['first'] = false;
 	flag_array['last'] = false;
-	flag_array['role'] = false;
+	flag_array['company'] = false;
 
-	$('#first_name').off('keyup');
-	$('#last_name').off('keyup');
-	$('#role').off('change');
+	$('#modal_first_name').off('keyup');
+	$('#modal_last_name').off('keyup');
+	$('#modal_company').off('change');
 
-	$('#first_name').val('');
-	$('#last_name').val('');
-	$('#role').val('');
+	$('#modal_first_name').val('');
+	$('#modal_last_name').val('');
+	$('#modal_company').val('');
 
-	$('#first_name').prop('disabled', false);
-	$('#last_name').prop('disabled', false);
-	$('#role').prop('disabled', false);
+	$('#modal_first_name').prop('disabled', false);
+	$('#modal_last_name').prop('disabled', false);
+	$('#modal_company').prop('disabled', false);
 
 	checkInput();
 }

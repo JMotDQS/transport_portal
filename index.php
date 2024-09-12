@@ -44,15 +44,15 @@
 				<p class="fullwidth">all fields required</p>
 				<div class="modal-form-element">
 					<!--<label for="first_name">First Name:</label>-->
-					<input type="text" id="first_name" name="first_name" placeholder="First Name">
+					<input type="text" id="modal_first_name" name="modal_first_name" placeholder="First Name">
 				</div>
 				<div class="modal-form-element">
 					<!--<label for="last_name">Last Name:</label>-->
-					<input type="text" id="last_name" name="last_name" placeholder="Last Name">
+					<input type="text" id="modal_last_name" name="modal_last_name" placeholder="Last Name">
 				</div>
 				<div class="modal-form-element">
 					<!--<label for="role" style="display:block;">Role:</label>-->
-					<select name="company" id="company"></select>
+					<select name="modal_company" id="modal_company"></select>
 				</div>
 			</div>
 		</dialog>

@@ -19,7 +19,7 @@ function getCompaniesPromise() {
 				reject(false);
 				consoleReporting(xhr)
 				consoleReporting("Details: " + desc + "\nError:" + err);
-				consoleReporting("createVINRecordPromise():Something broke");
+				consoleReporting("getCompaniesPromise():Something broke");
 			}
 		});
 	});
@@ -43,7 +43,6 @@ function userSearchPromise(param_file, param_search_string) {
 			},
 
 			success: function (data) {
-				console.log("userSearchPromise:data:", data);
 				g_USER_SEARCH = [];
 				g_USER_SEARCH = data;
 				resolve(true);
@@ -53,11 +52,45 @@ function userSearchPromise(param_file, param_search_string) {
 				reject(false);
 				consoleReporting(xhr)
 				consoleReporting("Details: " + desc + "\nError:" + err);
-				consoleReporting("createVINRecordPromise():Something broke");
+				consoleReporting("userSearchPromise():Something broke");
 			}
 		});
 	});
 }
 /********************************************************
 	User Search Promises End
+********************************************************/
+
+/********************************************************
+	Add User Promises Start
+********************************************************/
+function addUserPromise(param_file) {
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'firstName': dataCleanUp($('#modal_first_name').val()),
+				'lastName': dataCleanUp($('#modal_last_name').val()),
+				'companyId': $('#modal_company').val()
+			},
+
+			success: function (data) {
+				console.log(data);
+				resolve(true);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				console.log(xhr)
+				console.log("Details: " + desc + "\nError:" + err);
+				console.log("addUserPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	Add User Promises End
 ********************************************************/

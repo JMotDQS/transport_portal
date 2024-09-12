@@ -21,12 +21,6 @@
 				array_push($return_array, $row);
 			}
 		}
-
-		/*if ($res > 0) {
-			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
-				array_push($return_array['res'], $row);
-			}
-		}*/
 	}
 
 	$close_success = sqlsrv_close($conn);
