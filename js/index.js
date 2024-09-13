@@ -7,13 +7,13 @@ $(document).ready(function() {
 	getCompaniesPromise().then(function(resolve) {
 		console.log("getCompaniesPromise:Success");
 
-		var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
+		/*var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
 		for(i = 0; i < g_COMPANIES.length; i++) {
 			temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
 		}
-		$('#modal_company').html(temp_html);
+		$('#modal_company').html(temp_html);*/
 
-		loadPage('index');
+		//loadPage('index');
 		loadPage('nav', g_NAV);
 	}).catch(function(reject) {
 		console.log("Fail");
@@ -31,7 +31,7 @@ function loadPage(param_template, param_element = 'app') {
 			function(responseTxt, statusTxt, xhr) {
 				switch(statusTxt) {
 					case "success":
-						$('.navbar-link').on('click', function() {
+						$('.navbar-click').on('click', function() {
 							loadPage($(this).data('page'));
 						});
 						pageCheck(param_template);
@@ -48,7 +48,9 @@ function pageCheck(param_page) {
 	clearTimer(g_KEY_RESET_TIMER);
 
 	switch(param_page) {
-		case "userSearch":
+		case "addUser":	
+			buildCompanyDropdown('modal_company');
+			openModal('');
 			break;
 
 		case "vinCheckIn":

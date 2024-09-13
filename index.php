@@ -27,11 +27,11 @@
 		<div id="app"></div>
 		<div class="search-results"></div>
 
-		<dialog id="g_dialog" class="g_dialog">
-			<header class="modal-header">
+		<dialog id="modal" class="g_dialog">
+			<!-- <header class="modal-header">
 				<div id="title">
-					<h3>Add User</h3>
-					<!-- <p>all fields required</p> -->
+					<h3 id="modal-no-results"></h3>
+					<h2>Add User</h2>
 				</div>
 				<div class="modal-save invisible" onclick="addUser()">
 					<i class="far fa-save"></i>
@@ -39,22 +39,19 @@
 				<div class="modal-close" onclick="closeModal()">
 					<i class="far fa-window-close"></i>
 				</div>
-			</header>
-			<div class="modal-grid">
+			</header> -->
+			<!-- <div class="modal-grid">
 				<p class="fullwidth">all fields required</p>
 				<div class="modal-form-element">
-					<!--<label for="first_name">First Name:</label>-->
 					<input type="text" id="modal_first_name" name="modal_first_name" placeholder="First Name">
 				</div>
 				<div class="modal-form-element">
-					<!--<label for="last_name">Last Name:</label>-->
 					<input type="text" id="modal_last_name" name="modal_last_name" placeholder="Last Name">
 				</div>
 				<div class="modal-form-element">
-					<!--<label for="role" style="display:block;">Role:</label>-->
 					<select name="modal_company" id="modal_company"></select>
 				</div>
-			</div>
+			</div> -->
 		</dialog>
 
 	<!-- JQuery CDN -->

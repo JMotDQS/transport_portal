@@ -1,10 +1,10 @@
 var flag_array = [];
 var new_user_array = [];
 
-function openModal(param_search_string) {
+function openModal(param_search_string = '') {
 	resetModalForm()
 
-    var temp_title = `<h3>${param_search_string}</h3><h2>Add User</h2><p>all fields required</p>`;
+    var temp_title = `<h3>${param_search_string}</h3><h2>Add User</h2>`;
     $('#title').html(temp_title);
 
 	$('#modal_first_name').keyup( () => {
@@ -65,6 +65,14 @@ function checkInput() {
 	if(flag_array['first'] && flag_array['last'] && flag_array['company']) {
 		$('.modal-save').removeClass('invisible');
 	}
+}
+
+function buildCompanyDropdown(param_element) {
+	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
+	for(i = 0; i < g_COMPANIES.length; i++) {
+		temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
+	}
+	$('#' + param_element).html(temp_html);
 }
 
 function generateNewBadge(ele) {
