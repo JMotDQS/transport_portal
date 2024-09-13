@@ -23,12 +23,14 @@ header {
 	display: inline-block;
 }
 
-.navbar-link {
+.navbar-item {
 	margin: 0;
-	padding: var(--full-rem) var(--half-rem);
 	font-weight: 600;
-	font-size: .875rem;
+	font-size: calc(var(--full-rem) * .875);
 	color: var(--navbar-link-color);
+}
+.navbar-link {
+	padding: var(--full-rem) var(--half-rem);
 	cursor: pointer;
 }
 .navbar-link:hover {
@@ -36,6 +38,10 @@ header {
 }
 .nav-links li:nth-last-child(2) .navbar-link {
 	padding-right: 0px;
+}
+.nav-item-divider {
+	color: var(--navbar-link-hover-color);
+	font-size: var(--full-rem);
 }
 
 .nav-button {
