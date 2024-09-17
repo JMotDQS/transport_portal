@@ -128,3 +128,36 @@ function validateLocationPromise(param_file, param_badge) {
 /********************************************************
 	Validate Badge Promises End
 ********************************************************/
+
+/********************************************************
+	Record Association Promises Start
+********************************************************/
+function validateLocationPromise(param_file, param_string) {
+	console.log("param_badge:", param_badge);
+
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'asso_string': param_string
+			},
+
+			success: function (data) {
+				resolve(data);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				consoleReporting(xhr)
+				consoleReporting("Details: " + desc + "\nError:" + err);
+				consoleReporting("userSearchPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	Record Association Promises End
+********************************************************/

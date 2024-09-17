@@ -47,6 +47,7 @@ function pageCheck(param_page) {
 
 		case "itemAssociation":
 			setKeyEvents(param_page, 'modal_location_id');
+			$('#modal_asso_button').on('click', recordAssociation);
 			openModal();
 			break;
 	}

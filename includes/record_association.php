@@ -2,11 +2,8 @@
 	include("config.php");
 
 	$return_array = [];
-	$badge_array = [];
-    $comp_abb = '';
-	$temp_badge_num;
-	$temp_badge_num_new;
-	$new_badge_num = '';
+	$asso_array = [];
+	$asso_array = explode(",", $_POST['asso_string']);
 	$serverName = $host."\\sqlexpress";
 
 	$connectionInfo = array("Database"=>$db);
