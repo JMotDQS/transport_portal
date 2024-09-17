@@ -7,6 +7,7 @@ var g_KEY_RESET_TIMER;
 var g_USER_SEARCH = [];
 var g_NO_SEARCH_RESULTS = '';
 var g_COMPANIES = [];
+const g_MAILBOX_LENGTH = 8;
 const g_TIMEOUT_VAL = 500;
 const g_RESET_TIMEOUT_VAL = 2000;
 const g_APP = 'app';

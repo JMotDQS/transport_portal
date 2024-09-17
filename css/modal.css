@@ -31,6 +31,7 @@
     font-style: italic;
     margin-block-end: var(--half-rem);
 }
+
 .modal-form-element input {
 	display: block;
 	padding: var(--quarter-rem);

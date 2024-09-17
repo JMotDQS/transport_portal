@@ -6,14 +6,6 @@ $(document).ready(function() {
 
 	getCompaniesPromise().then(function(resolve) {
 		console.log("getCompaniesPromise:Success");
-
-		/*var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
-		for(i = 0; i < g_COMPANIES.length; i++) {
-			temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
-		}
-		$('#modal_company').html(temp_html);*/
-
-		//loadPage('index');
 		loadPage('nav', g_NAV);
 	}).catch(function(reject) {
 		console.log("Fail");
@@ -54,52 +46,9 @@ function pageCheck(param_page) {
 			break;
 
 		case "itemAssociation":
-			//$('#vinNum').focus();
-			//setKeyEvents(param_page, 'vinNum');
-			console.log("page loaded:", param_page);
+			setKeyEvents(param_page, 'modal_location_id');
+			openModal();
 			break;
-/*		
-		case "keyCheckIn":
-			$('#storage-vin-column').css('opacity', 1);
-			$('#vinNum').focus();
-			setKeyEvents(param_page, 'vinNum');
-
-			$('#storage-bin-column').css('opacity', 0.5);
-			toggleDisabled('#binNum', true);
-			setKeyEvents(param_page, 'binNum');
-
-			toggleDisabled('.button-container button', true);
-			break;
-
-		case "keyCheckOut":
-			$('#vinSearch').focus();
-			$('#vinSearch').on('keypress', vinSearchKeyPressEvent);
-			toggleDisabled('#search-button', true);
-			toggleDisabled('#clear-button', false);
-			$('#search-results-table').addClass('invisible');
-
-			//setKeyEvents(param_page, 'badgeNumCheckout');
-
-			toggleDisabled('#binNumCheckout', true);
-			setKeyEvents(param_page, 'binNumCheckout');
-
-			toggleDisabled('#binNumCheckout', true);
-			setKeyEvents(param_page, 'vinNumCheckout');
-			break;
-
-		case "search":
-			$('#vinSearch').focus();
-			$('#vinSearch').on('keypress', vinSearchKeyPressEvent);
-			break;
-
-		case "dashboard":
-			loadDashboardData();
-			break;
-			
-		default:
-			$('#app_version').html(`v ${g_VER}`);
-			break;
-*/
 	}
 }
 
@@ -151,8 +100,7 @@ function userSearch(e) {
 				$('.search-results').html('');
 				$('#app').removeClass('app-feedback');
 				$('#app').html('');
-				loadPage('addUser', g_MODAL)
-				//openModal();
+				loadPage('addUser', g_MODAL);
 
 				return false;
 			} else {

@@ -88,44 +88,29 @@ label {
 }
 </style>
 
-<div class="shell">
-	<h2>Key Check-In</h2>
-	<div class="grid-container grid-container-ks">
-		<div>
-			<div id="storage-vin-column" class="inner-columns">
-				<div>
-					<h5>Please scan VIN</h5>
-					<label for="vinNum">VIN:&nbsp;</label>
-					<input class="input-styling" type="text" id="vinNum" name="vinNum">
-				</div>
-				<div>
-					<p id="vin-scan-feedback"></p>
-				</div>
-			</div>
-			<div id="storage-bin-column" class="inner-columns">
-				<div>
-					<h5>Please scan Bin</h5>
-					<label for="binNum">Bin Loc:&nbsp;</label>
-					<input class="input-styling" type="text" id="binNum" name="binNum">
-				</div>
-				<div>
-					<p id="bin-scan-feedback"></p>
-				</div>
-			</div>
-
-			<div class="checkin-confirmation-container">
-				<h4>Please confirm key check-in</h4>
-				<div class="button-container">
-					<button id="clear-button" onclick="clearCheckIn()">Clear</button>
-					<button id="confirm-button" onclick="sendStorageInfo()">Confirm</button>
-				</div>
-			</div>
-		</div>
-		<div class="inner-columns">
-			<div>
-				<h5>Available Slots by Case</h5>
-				<div id="avail-slots" class="flex-container-slots"></div>
-			</div>
-		</div>
+<header class="modal-header">
+	<div id="title">
+		<h3 id="modal-no-results"></h3>
+		<h2>Add User</h2>
+	</div>
+	<div class="modal-save invisible" onclick="addUser()">
+		<i class="far fa-save"></i>
+	</div>
+	<div class="modal-close" onclick="closeModal()">
+		<i class="far fa-window-close"></i>
+	</div>
+</header>
+<div class="modal-grid">
+	<p class="fullwidth">all fields required</p>
+	<div class="modal-form-element">
+		<input type="text" id="modal_location_id" name="modal_location_id" placeholder="Scan Location Id">
+		<div class="modal_feedback" id="modal_location_id_feedback"></div>
+	</div>
+	<div class="modal-form-element">
+		<input class=" invisible" type="text" id="modal_asso_items" name="modal_asso_items" placeholder="Scan Item Ids">
+		<div class="modal_feedback invisible" id="modal_asso_items_feedback"></div>
+	</div>
+	<div class="modal-form-element">
+		<select class=" invisible" name="modal_company" id="modal_company"></select>
 	</div>
 </div>

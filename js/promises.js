@@ -95,3 +95,36 @@ function addUserPromise(param_file) {
 /********************************************************
 	Add User Promises End
 ********************************************************/
+
+/********************************************************
+	Validate Badge Promises Start
+********************************************************/
+function validateLocationPromise(param_file, param_badge) {
+	console.log("param_badge:", param_badge);
+
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'badge_id': param_badge
+			},
+
+			success: function (data) {
+				resolve(data);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				consoleReporting(xhr)
+				consoleReporting("Details: " + desc + "\nError:" + err);
+				consoleReporting("userSearchPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	Validate Badge Promises End
+********************************************************/
