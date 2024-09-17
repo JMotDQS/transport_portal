@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=11" />
 
-		<title>KMS</title>
+		<title>Transportation Portal</title>
 
 	<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/custom.css">
@@ -66,8 +66,8 @@
 		<script src="js/custom.js"></script>
 		<script src="js/promises.js"></script>
 		<script src="js/modal.js"></script>
-		<!-- <script src="js/vinCheckIn.js"></script>
-		<script src="js/keyCheckIn.js"></script>
+		<script src="js/itemAssociation.js"></script>
+		<!-- <script src="js/keyCheckIn.js"></script>
 		<script src="js/keyCheckOut.js"></script>
 		<script src="js/search.js"></script>
 		<script src="js/kmsAudit.js"></script>
