@@ -1,4 +1,4 @@
-function validateLocation(param_ele) {
+function validateLocation(param_ele, param_page) {
     var temp_location = dataCleanUp($('#modal_location_id').val());
     if(temp_location.slice(0, 2) == 'MB' && temp_location.length == g_MAILBOX_LENGTH) {
         feedBackColoring('#' + param_ele + '_feedback', 'green');
@@ -17,7 +17,7 @@ function validateLocation(param_ele) {
 				} else {
 					feedBackColoring('#' + param_ele + '_feedback', 'green');
 					$('#' + param_ele + '_feedback').html('Valid Badge Id');
-					setKeyEvents('itemAssociation', 'modal_location_id');
+					setKeyEvents(param_page, 'modal_location_id');
 					$('#modal_asso_items').removeClass('invisible');
 				}
 			}
