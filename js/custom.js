@@ -1,16 +1,13 @@
 function keyPressEvent(e) {
-	console.log("keyPressEvent() called");
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 
 	switch(e.data.page) {
 		case 'itemAssociation':
-			console.log("Key Pressed");
 			break;
 	}
 }
 function keyUpEvent(e) {
-	console.log("keyUpEvent() called");
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 
