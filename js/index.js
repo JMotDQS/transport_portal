@@ -50,7 +50,7 @@ function pageCheck(param_page) {
 	switch(param_page) {
 		case "addUser":	
 			buildCompanyDropdown('modal_company');
-			openModal('');
+			openModal(g_NO_SEARCH_RESULTS);
 			break;
 
 		case "itemAssociation":
@@ -126,6 +126,7 @@ function reverseEntities(param_string) {
 function userSearch(e) {
 	e.preventDefault;
 	var temp_html = '';	
+	console.log("e:", e);
 
 	/*** If search is done with blank search field ***/
 	if($('#nav-search-field').val() == '') {
@@ -145,11 +146,13 @@ function userSearch(e) {
 			
 			/*** If search result is empty ***/
 			if(g_USER_SEARCH.length == 0) {
-				temp_html = 'No results found for <b><i>'+ $('#nav-search-field').val() + '</i></b>';
+				g_NO_SEARCH_RESULTS = '';
+				g_NO_SEARCH_RESULTS = 'No results found for <b><i>'+ $('#nav-search-field').val() + '</i></b>';
 				$('.search-results').html('');
 				$('#app').removeClass('app-feedback');
 				$('#app').html('');
-				openModal(temp_html);
+				loadPage('addUser', g_MODAL)
+				//openModal();
 
 				return false;
 			} else {
