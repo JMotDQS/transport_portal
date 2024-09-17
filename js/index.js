@@ -53,11 +53,12 @@ function pageCheck(param_page) {
 			openModal('');
 			break;
 
-		case "vinCheckIn":
-			$('#vinNum').focus();
-			setKeyEvents(param_page, 'vinNum');
+		case "itemAssociation":
+			//$('#vinNum').focus();
+			//setKeyEvents(param_page, 'vinNum');
+			console.log("page loaded:", param_page);
 			break;
-
+/*		
 		case "keyCheckIn":
 			$('#storage-vin-column').css('opacity', 1);
 			$('#vinNum').focus();
@@ -66,12 +67,6 @@ function pageCheck(param_page) {
 			$('#storage-bin-column').css('opacity', 0.5);
 			toggleDisabled('#binNum', true);
 			setKeyEvents(param_page, 'binNum');
-
-			findAllOpenSlots();
-
-			/*$('#storage-badge-column').css('opacity', 0.5);
-			toggleDisabled('#badgeNum', true);
-			setKeyEvents(param_page, 'badgeNum');*/
 
 			toggleDisabled('.button-container button', true);
 			break;
@@ -104,7 +99,7 @@ function pageCheck(param_page) {
 		default:
 			$('#app_version').html(`v ${g_VER}`);
 			break;
-
+*/
 	}
 }
 

@@ -1,0 +1,131 @@
+<style>
+.grid-container-ks {
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	/*grid-auto-rows: minmax(20vh, auto);*/
+	gap: var(--full-rem);
+	align-items: self-start;
+}
+
+.grid-container-slots {
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	/*grid-auto-rows: minmax(20vh, auto);*/
+	gap: var(--full-rem);
+	align-items: self-start;
+}
+
+.flex-container-slots {
+	display: flex;
+	flex-wrap: wrap;
+}
+.flex-item-gap {
+	margin-inline: var(--half-rem);
+	margin-block-end: var(--full-rem);
+	text-align: center;
+}
+
+p {
+	font-size: var(--three-quarter-rem);
+}
+.case-slot-count {
+	padding: 0;
+	font-weight: 700;
+}
+
+.display-scan-data {
+	font-size: var(--three-quarter-rem);
+	padding: 0px;
+	padding-block-start: var(--quarter-rem);
+}
+
+.inner-columns {
+	display: flex;
+	flex-direction: row;
+	border: var(--quarter-rem) double #000000;
+	border-radius: var(--half-rem);
+	padding: var(--quarter-rem);
+	column-gap: var(--full-rem);
+}
+
+#storage-bin-column {
+	margin-block-start: var(--half-rem);
+}
+
+.input-styling {
+	border: none;
+	border-bottom: thin solid #000000;
+	background: transparent;
+}
+
+label {
+	font-size: var(--three-quarter-rem);
+	font-weight: bold;
+}
+
+/*button {
+	margin-inline-start: var(--full-half-rem);
+}*/
+
+.button-container button:nth-child(even) {
+	margin-inline-start: var(--full-half-rem);
+}
+
+.checkin-confirmation-container {
+	margin-block-start: var(--full-rem);
+}
+
+.under-5-slots {
+	color: #ff8f8f;
+}
+.over-4-slots {
+	color: #009938;
+}
+
+/****************
+	Desktop Virw
+****************/
+@media all and (min-width: 500px) {
+	
+}
+</style>
+
+<div class="shell">
+	<h2>Key Check-In</h2>
+	<div class="grid-container grid-container-ks">
+		<div>
+			<div id="storage-vin-column" class="inner-columns">
+				<div>
+					<h5>Please scan VIN</h5>
+					<label for="vinNum">VIN:&nbsp;</label>
+					<input class="input-styling" type="text" id="vinNum" name="vinNum">
+				</div>
+				<div>
+					<p id="vin-scan-feedback"></p>
+				</div>
+			</div>
+			<div id="storage-bin-column" class="inner-columns">
+				<div>
+					<h5>Please scan Bin</h5>
+					<label for="binNum">Bin Loc:&nbsp;</label>
+					<input class="input-styling" type="text" id="binNum" name="binNum">
+				</div>
+				<div>
+					<p id="bin-scan-feedback"></p>
+				</div>
+			</div>
+
+			<div class="checkin-confirmation-container">
+				<h4>Please confirm key check-in</h4>
+				<div class="button-container">
+					<button id="clear-button" onclick="clearCheckIn()">Clear</button>
+					<button id="confirm-button" onclick="sendStorageInfo()">Confirm</button>
+				</div>
+			</div>
+		</div>
+		<div class="inner-columns">
+			<div>
+				<h5>Available Slots by Case</h5>
+				<div id="avail-slots" class="flex-container-slots"></div>
+			</div>
+		</div>
+	</div>
+</div>
