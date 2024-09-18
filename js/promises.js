@@ -132,8 +132,7 @@ function validateLocationPromise(param_file, param_badge) {
 /********************************************************
 	Record Association Promises Start
 ********************************************************/
-function recordAssociationPromise(param_file, param_string) {
-	console.log("param_badge:", param_badge);
+function recordAssociationPromise(param_file) {
 
 	return new Promise(function(resolve, reject) {
 		$.ajax({
@@ -142,7 +141,7 @@ function recordAssociationPromise(param_file, param_string) {
 			cache: false,
 			dataType: 'json',
 			data: {
-				'asso_string': param_string,
+				'asso_string': g_ASSOCIATE_ITEMS,
 				'new_location': g_NEW_LOCATION
 			},
 
@@ -152,9 +151,9 @@ function recordAssociationPromise(param_file, param_string) {
 
 			error: function(xhr, desc, err) {
 				reject(false);
-				consoleReporting(xhr)
-				consoleReporting("Details: " + desc + "\nError:" + err);
-				consoleReporting("recordAssociationPromise():Something broke");
+				console.log(xhr)
+				console.log("Details: " + desc + "\nError:" + err);
+				console.log("recordAssociationPromise():Something broke");
 			}
 		});
 	});

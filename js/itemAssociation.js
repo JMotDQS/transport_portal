@@ -40,10 +40,9 @@ function validateLocation(param_ele, param_page) {
 }
 
 function recordAssociation() {
-	console.log("g_ASSOCIATE_ITEMS:", g_ASSOCIATE_ITEMS);
 	toggleDisabled('modal_asso_button', true);
 
-	recordAssociationPromise('record_association', param_string, g_NEW_LOCATION).then(
+	recordAssociationPromise('record_association').then(
 		function(resolve) {
 			console.log("Success.");
 		}

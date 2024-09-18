@@ -3,7 +3,8 @@
 
 	$asso_array = [];
 	$asso_array = explode(",", $_POST['asso_string']);
-	$prev_location = NULL;
+	array_pop($asso_array);
+	$prev_location = 'NULL';
 	$asso_count = 0;
 	$serverName = $host."\\sqlexpress";
 
@@ -18,7 +19,7 @@
 						FROM asset_tracking
 						WHERE asset_id = '".$asso_array[$i]."'";
 			$res_track = sqlsrv_query($conn, $sql_track);
-			if (sqlsrv_has_rows($res)) {
+			if (sqlsrv_has_rows($res_track)) {
 				while ($row = sqlsrv_fetch_array($res_track, SQLSRV_FETCH_ASSOC)) {
 					$prev_location = $row['cur_location'];
 				}
@@ -28,16 +29,16 @@
 							WHERE asset_id = '".$asso_array[$i]."'";
 				$res_track = sqlsrv_query($conn, $sql_track);
 			} else {
-				$prev_location = NULL;
+				$prev_location = 'NULL';
 				$sql_track = "INSERT INTO asset_tracking
-								(created_date, update_date, asset_id, prev_location, cur_location)
-							VALUES (GETDATE(), NULL, '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."'";
+								(created_date, updated_date, asset_id, prev_location, cur_location)
+							VALUES (GETDATE(), NULL, '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."')";
 				$res_track = sqlsrv_query($conn, $sql_track);
 			}
 
 			$sql_track_his = "INSERT INTO asset_tracking_historical
 								(created_date, asset_id, prev_location, cur_location)
-							VALUES (GETDATE(), '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."'";
+							VALUES (GETDATE(), '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."')";
 			$res_track_his = sqlsrv_query($conn, $sql_track_his);
 
 		}
