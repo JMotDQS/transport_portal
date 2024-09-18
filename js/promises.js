@@ -120,7 +120,7 @@ function validateLocationPromise(param_file, param_badge) {
 				reject(false);
 				consoleReporting(xhr)
 				consoleReporting("Details: " + desc + "\nError:" + err);
-				consoleReporting("userSearchPromise():Something broke");
+				consoleReporting("validateLocationPromise():Something broke");
 			}
 		});
 	});
@@ -132,7 +132,7 @@ function validateLocationPromise(param_file, param_badge) {
 /********************************************************
 	Record Association Promises Start
 ********************************************************/
-function validateLocationPromise(param_file, param_string) {
+function recordAssociationPromise(param_file, param_string) {
 	console.log("param_badge:", param_badge);
 
 	return new Promise(function(resolve, reject) {
@@ -142,7 +142,8 @@ function validateLocationPromise(param_file, param_string) {
 			cache: false,
 			dataType: 'json',
 			data: {
-				'asso_string': param_string
+				'asso_string': param_string,
+				'new_location': g_NEW_LOCATION
 			},
 
 			success: function (data) {
@@ -153,7 +154,7 @@ function validateLocationPromise(param_file, param_string) {
 				reject(false);
 				consoleReporting(xhr)
 				consoleReporting("Details: " + desc + "\nError:" + err);
-				consoleReporting("userSearchPromise():Something broke");
+				consoleReporting("recordAssociationPromise():Something broke");
 			}
 		});
 	});
