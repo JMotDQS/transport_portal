@@ -1,3 +1,9 @@
+function clearUserSearch() {
+    $('#nav-search-field').val('');
+    $('.search-results').html('');
+	$('#app').html('');
+}
+
 function userSearch(e) {
 	e.preventDefault;
 	var temp_html = '';
