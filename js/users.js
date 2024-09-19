@@ -55,7 +55,7 @@ function userSearch(e) {
 								temp_html += `<div>${g_USER_SEARCH[i]['badge_id']}</div>`;
 							}
 
-							temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" onclick="printUser(this)">`;
+							temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" data-index="${i}" onclick="printUser(this)">`;
 								temp_html += `<i class="fas fa-print"></i>`;
 							temp_html += `</div>`;
 
@@ -84,4 +84,11 @@ function printUser(param_obj) {
     var temp_array = param_obj.id.split('_');
     var selected_user_id = parseInt(temp_array[(temp_array.length - 1)]);
     console.log("selected_user_id:", selected_user_id);
+
+    var print_firstName = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['first_name'];
+    var print_lastName = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['last_name'];
+    var print_badgeId = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['badge_id'];
+    console.log("first_name:", print_firstName);
+    console.log("flast_name:", print_lastName);
+    console.log("badgeId:", print_badgeId);
 }
