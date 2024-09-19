@@ -105,5 +105,10 @@ function resetModalForm() {
 	$('#modal_last_name').prop('disabled', false);
 	$('#modal_company').prop('disabled', false);
 
+	$('#modal_location_id').val('');
+	$('#modal_location_id').off('keyup');
+	$('#modal_asso_items').val('');
+	$('#modal_asso_items').addClass('invisible');
+
 	checkInput();
 }

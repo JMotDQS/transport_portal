@@ -45,6 +45,7 @@ function recordAssociation() {
 	recordAssociationPromise('record_association').then(
 		function(resolve) {
 			console.log("Success.");
+			closeModal();
 		}
 	).catch(
 		function(reject) {
