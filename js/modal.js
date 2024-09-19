@@ -3,10 +3,7 @@ var new_user_array = [];
 
 function openModal(param_search_string = '') {
 	resetModalForm()
-
-    //var temp_title = `<h3>${param_search_string}</h3><h2>Add User</h2>`;
 	$('#modal-no-results').html(param_search_string);
-    //$('#title').html(temp_title);
 
 	$('#modal_first_name').keyup( () => {
 		if ($('#modal_first_name').val().length > 0) {

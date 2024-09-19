@@ -40,10 +40,10 @@
 		<script src="js/index.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/promises.js"></script>
-		<script src="js/modal.js"></script>
+		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
-		<!-- <script src="js/keyCheckIn.js"></script>
-		<script src="js/keyCheckOut.js"></script>
+		<script src="js/modal.js"></script>
+		<!-- <script src="js/keyCheckOut.js"></script>
 		<script src="js/search.js"></script>
 		<script src="js/kmsAudit.js"></script>
 		<script src="js/dashboard.js"></script> -->
