@@ -1,4 +1,5 @@
 function validateLocation(param_ele, param_page) {
+	console.log("validateLocation called");
     g_NEW_LOCATION = dataCleanUp($('#modal_location_id').val());
     if(g_NEW_LOCATION.slice(0, 2) == 'MB' && g_NEW_LOCATION.length == g_MAILBOX_LENGTH) {
         feedBackColoring('#' + param_ele + '_feedback', 'green');

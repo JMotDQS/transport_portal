@@ -37,7 +37,6 @@ function loadPage(param_template, param_element = 'app') {
 }
 function pageCheck(param_page) {
 	clearTimer(g_TIMER);
-	clearTimer(g_KEY_RESET_TIMER);
 
 	switch(param_page) {
 		case "addUser":	
@@ -46,9 +45,9 @@ function pageCheck(param_page) {
 			break;
 
 		case "itemAssociation":
+			openModal();
 			setKeyEvents(param_page, 'modal_location_id');
 			$('#modal_asso_button').on('click', recordAssociation);
-			openModal();
 			break;
 	}
 }

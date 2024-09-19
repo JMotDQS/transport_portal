@@ -15,7 +15,7 @@ function keyUpEvent(e) {
 		case 'itemAssociation':
 			switch(e.data.inputEl) {
 				case 'modal_location_id':
-					g_TIMER = window.setTimeout(() => {
+				g_TIMER = window.setTimeout(() => {
 						toggleDisabled('#' + e.currentTarget.id, true);
 						validateLocation(e.data.inputEl, e.data.page);
 					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
