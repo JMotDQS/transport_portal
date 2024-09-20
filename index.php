@@ -12,8 +12,6 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/navbar.css">
 		<link rel="stylesheet" href="css/modal.css">
-		<!-- <link rel="stylesheet" href="css/loading-animation.css">
-		<link rel="stylesheet" href="css/pagination.css"> -->
 
 	</head>
 
@@ -43,9 +41,5 @@
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
 		<script src="js/modal.js"></script>
-		<!-- <script src="js/keyCheckOut.js"></script>
-		<script src="js/search.js"></script>
-		<script src="js/kmsAudit.js"></script>
-		<script src="js/dashboard.js"></script> -->
 	</body>
 </html>
