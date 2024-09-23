@@ -36,14 +36,25 @@ function userSearch(e) {
 				return false;
 			} else {
 				temp_html = '';
+				var user_inactive;
 				for(i = 0; i < g_USER_SEARCH.length; i++) {
+					user_active = true;
+					if(parseInt(g_USER_SEARCH[i]['is_active']) == 0) {
+						user_active = false;
+					}
+
 					temp_html += `<div class="card" data-id='${g_USER_SEARCH[i]['pk_id']}'>`;
 						temp_html += `<div class="card-grid card-titles">`;
 								temp_html += `<div>Last, First Name</div>`;
 								temp_html += `<div>Badge</div>`;
 								temp_html += `<div>Print QR</div>`;
 						temp_html += `</div>`;
-						temp_html += `<div class="card-grid card-data">`;
+
+						temp_html += `<div class="card-grid card-data`;
+						if(!user_active) {
+							temp_html += ` user-inactive`;
+						}
+						temp_html += `">`;
 							temp_html += `<div>${g_USER_SEARCH[i]['last_name']}, ${g_USER_SEARCH[i]['first_name']}</div>`;
 
 							if(g_USER_SEARCH[i]['badge_id'] == '' || g_USER_SEARCH[i]['badge_id'] == null) {
@@ -55,9 +66,13 @@ function userSearch(e) {
 								temp_html += `<div>${g_USER_SEARCH[i]['badge_id']}</div>`;
 							}
 
-							temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" data-index="${i}" onclick="printUser(this)">`;
-								temp_html += `<i class="fas fa-print"></i>`;
-							temp_html += `</div>`;
+							if(!user_active) {
+								temp_html += `<div>User Inactive</div>`;
+							} else {
+								temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" data-index="${i}" onclick="printUser(this)">`;
+									temp_html += `<i class="fas fa-print"></i>`;
+								temp_html += `</div>`;
+							}
 
 						temp_html += `</div>`;
 					temp_html += `</div>`;
