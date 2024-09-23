@@ -102,9 +102,10 @@ nav input[type=text] {
 
 #search-clear-button {
 	font-weight: 500;
+	margin-inline-start: var(--quarter-rem);
 	margin-inline-end: var(--full-rem);
 	border-radius: var(--quarter-rem);
-	padding-inline: var(--full-rem);
+	padding-inline: var(--half-rem);
 	padding-block: calc(var(--quarter-rem) / 2);
 	cursor: pointer;
 }
