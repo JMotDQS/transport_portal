@@ -161,3 +161,36 @@ function recordAssociationPromise(param_file) {
 /********************************************************
 	Record Association Promises End
 ********************************************************/
+
+/********************************************************
+	Reporting Promises Start
+********************************************************/
+function reportingPromise(param_file) {
+
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'asso_string': g_ASSOCIATE_ITEMS,
+				'new_location': g_NEW_LOCATION
+			},
+
+			success: function (data) {
+				resolve(data);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				console.log(xhr)
+				console.log("Details: " + desc + "\nError:" + err);
+				console.log("recordAssociationPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	Reporting Promises End
+********************************************************/
