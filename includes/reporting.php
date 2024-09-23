@@ -51,9 +51,9 @@
 		}*/
 	}
 
-	/*$close_success = sqlsrv_close($conn);
+	$close_success = sqlsrv_close($conn);
 	if ($close_success) {
 		echo json_encode($return_array);
-	}*/
+	}
 
 ?>
