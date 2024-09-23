@@ -40,6 +40,7 @@
 		<script src="js/promises.js"></script>
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
+		<script src="js/reports.js"></script>
 		<script src="js/modal.js"></script>
 	</body>
 </html>
