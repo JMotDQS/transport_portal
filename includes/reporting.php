@@ -27,6 +27,7 @@
 				ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 
+
 		if (sqlsrv_has_rows($res)) {
 			$fp = fopen('../../'.$trackingReport, 'w');
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
