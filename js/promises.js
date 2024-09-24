@@ -173,10 +173,6 @@ function reportingPromise(param_file) {
 			type: 'POST',
 			cache: false,
 			dataType: 'json',
-			data: {
-				'asso_string': g_ASSOCIATE_ITEMS,
-				'new_location': g_NEW_LOCATION
-			},
 
 			success: function (data) {
 				resolve(data);
