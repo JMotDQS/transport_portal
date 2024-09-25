@@ -29,8 +29,7 @@
 							INNER JOIN transport_users AS tu ON tu.badge_id = ath.asset_id
 							INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id";
 
-    $fp = fopen('php://output', 'w');
-	$serverName = $host."\\sqlexpress";
+    $serverName = $host."\\sqlexpress";
 
 	// Since UID and PWD are not specified in the $connectionInfo array,
 	// The connection will be attempted using Windows Authentication.
@@ -45,16 +44,23 @@
 			Query to select all records in asset_tracking
 			where current location is a mailbox
 		**********/
-		$sql = $tracking_sql." WHERE at.cur_location LIKE 'MB%' ORDER BY at.cur_location";
+		$sql = "SELECT at.pk_id,
+					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
+					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
+					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
+					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
+					at.asset_id, at.cur_location AS current_location,
+					at.prev_location AS previous_location
+				FROM asset_tracking AS at
+				WHERE at.cur_location LIKE 'MB%'
+				ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
-			// If there are records, open a new file
-			$fp = fopen('../../'.$trackingReport, 'w');
+			// If there are records
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($tracking_array, $row);
 				if (!isset($headings)) {
 					$headings = array_keys($row);
-					fputcsv($fp, $headings, ',', '"');
 				}
 			}
 		}
@@ -64,33 +70,28 @@
 			where current location is NOT a mailbox
 			(meaning a person has the asset)
 		**********/
-		$sql = $tracking_sql."WHERE at.cur_location NOT LIKE 'MB%' ORDER BY at.cur_location";
+		$sql = "SELECT at.pk_id,
+					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
+					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
+					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
+					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
+					at.asset_id, at.cur_location AS current_location, at.prev_location AS previous_location,
+					tu.first_name, tu.last_name, tc.company_name
+				FROM asset_tracking AS at
+					INNER JOIN transport_users AS tu ON tu.badge_id = at.cur_location
+					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
+				WHERE at.cur_location NOT LIKE 'MB%'
+				ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
-			/**********
-				if there are records, check if a file has already been opened
-				if not, open one
-			**********/
-			if(!fstat($fp)) {
-				$fp = fopen('../../'.$trackingReport, 'w');
-			}
+			//if there are records
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($tracking_array, $row);
 				if (!isset($headings)) {
 					$headings = array_keys($row);
-					fputcsv($fp, $headings, ',', '"');
 				}
 			}
 		}
-
-		/**********
-			Add all records found to file
-		**********/
-		foreach ($tracking_array as $pair) {
-			fputcsv($fp, $pair);
-		}
-		fclose($fp);
-
 
 	/**********
 		All queries for asset_tracking_hitorical table data
@@ -99,16 +100,21 @@
 			Query to select all records in asset_tracking_hitorical
 			where current location is a mailbox
 		**********/
-		$sql = $his_tracking_sql."WHERE ath.cur_location LIKE 'MB%' ORDER BY ath.cur_location";
+		$sql = "SELECT ath.pk_id,
+					FORMAT(ath.created_date, 'yyyy-mm-dd') AS created_date,
+					FORMAT(ath.created_date, 'hh:mm:ss') AS created_time,
+					ath.asset_id, ath.cur_location AS current_location,
+					ath.prev_location AS previous_location
+				FROM asset_tracking_historical AS ath
+				WHERE ath.cur_location LIKE 'MB%'
+				ORDER BY ath.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
-			// If there are records, open a new file
-			$fp = fopen('../../'.$hisTrackingReport, 'w');
+			// If there are records
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($his_tracking_array, $row);
-				if (!isset($headings)) {
-					$headings = array_keys($row);
-					fputcsv($fp, $headings, ',', '"');
+				if (!isset($his_headings)) {
+					$his_headings = array_keys($row);
 				}
 			}
 		}
@@ -118,36 +124,60 @@
 			where current location is NOT a mailbox
 			(meaning a person has the asset)
 		**********/
-		$sql = $his_tracking_sql."WHERE at.cur_location NOT LIKE 'MB%' ORDER BY at.cur_location";
+		$sql = "SELECT ath.pk_id,
+					FORMAT(ath.created_date, 'yyyy-mm-dd') AS created_date,
+					FORMAT(ath.created_date, 'hh:mm:ss') AS created_time,
+					ath.asset_id, ath.cur_location AS current_location, ath.prev_location AS previous_location,
+					tu.first_name, tu.last_name, tc.company_name
+				FROM asset_tracking_historical AS ath
+					INNER JOIN transport_users AS tu ON tu.badge_id = ath.cur_location
+					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
+				WHERE ath.cur_location NOT LIKE 'MB%'
+				ORDER BY ath.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
-			/**********
-				if there are records, check if a file has already been opened
-				if not, open one
-			**********/
-			if(!fstat($fp)) {
-				$fp = fopen('../../'.$hisTrackingReport, 'w');
-			}
+			// If there are records
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($his_tracking_array, $row);
-				if (!isset($headings)) {
-					$headings = array_keys($row);
-					fputcsv($fp, $headings, ',', '"');
+				if (!isset($his_headings)) {
+					$his_headings = array_keys($row);
 				}
 			}
 		}
-
-		/**********
-			Add all records found to file
-		**********/
-		foreach ($his_tracking_array as $pair) {
-			fputcsv($fp, $pair);
-		}
-		fclose($fp);
 	}
 
 	$close_success = sqlsrv_close($conn);
 	if ($close_success) {
+		$fp = fopen('php://output', 'w');
+		$fp = fopen('../../'.$trackingReport, 'w');
+
+		if (isset($headings)) {
+			fputcsv($fp, $headings, ',', '"');
+		}
+
+		foreach ($tracking_array as $pair) {
+			if($pair['updated_date'] == '') {
+				$pair['updated_date'] = 'NULL';
+			}
+			if($pair['updated_time'] == '') {
+				$pair['updated_time'] = 'NULL';
+			}
+			fputcsv($fp, $pair);
+		}
+		fclose($fp);
+
+		$fp = fopen('php://output', 'w');
+		$fp = fopen('../../'.$hisTrackingReport, 'w');
+
+		if (isset($his_headings)) {
+			fputcsv($fp, $his_headings, ',', '"');
+		}
+
+		foreach ($his_tracking_array as $pair) {
+			fputcsv($fp, $pair);
+		}
+		fclose($fp);
+
 		echo json_encode(true);
 	}
 

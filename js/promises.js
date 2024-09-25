@@ -175,6 +175,7 @@ function reportingPromise(param_file) {
 			dataType: 'json',
 
 			success: function (data) {
+				console.log("data:", data);
 				resolve(data);
 			},
 
