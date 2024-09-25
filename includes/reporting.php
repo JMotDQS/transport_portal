@@ -8,6 +8,27 @@
 
 	$trackingReport = 'asset_tracking.csv';
 	$hisTrackingReport = 'historical_asset_tracking.csv';
+
+	$tracking_sql = "SELECT at.pk_id,
+						FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
+						FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
+						FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
+						FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
+						at.asset_id, tu.first_name, tu.last_name, tc.company_name,
+						at.cur_location AS current_location, at.prev_location AS previous_location
+					FROM asset_tracking AS at
+						INNER JOIN transport_users AS tu ON tu.badge_id = at.asset_id
+						INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id";
+	
+	$his_tracking_sql = "SELECT ath.pk_id,
+							FORMAT(ath.created_date, 'yyyy-mm-dd') AS created_date,
+							FORMAT(ath.created_date, 'hh:mm:ss') AS created_time,
+							ath.asset_id, tu.first_name, tu.last_name, tc.company_name,
+							ath.cur_location AS current_location, ath.prev_location AS previous_location
+						FROM asset_tracking_historical AS ath
+							INNER JOIN transport_users AS tu ON tu.badge_id = ath.asset_id
+							INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id";
+
     $fp = fopen('php://output', 'w');
 	$serverName = $host."\\sqlexpress";
 
@@ -24,18 +45,7 @@
 			Query to select all records in asset_tracking
 			where current location is a mailbox
 		**********/
-		$sql = "SELECT at.pk_id,
-					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
-					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
-					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
-					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
-					at.asset_id, tu.first_name, tu.last_name, tc.company_name,
-					at.cur_location AS current_location, at.prev_location AS previous_location
-				FROM asset_tracking AS at
-					INNER JOIN transport_users AS tu ON tu.badge_id = at.asset_id
-					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
-				WHERE at.cur_location LIKE 'MB%'
-				ORDER BY at.cur_location";
+		$sql = $tracking_sql." WHERE at.cur_location LIKE 'MB%' ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
 			// If there are records, open a new file
@@ -54,18 +64,7 @@
 			where current location is NOT a mailbox
 			(meaning a person has the asset)
 		**********/
-		$sql = "SELECT at.pk_id,
-					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
-					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
-					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
-					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
-					at.asset_id, tu.first_name, tu.last_name, tc.company_name,
-					at.cur_location AS current_location, at.prev_location AS previous_location
-				FROM asset_tracking AS at
-					INNER JOIN transport_users AS tu ON tu.badge_id = at.asset_id
-					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
-				WHERE at.cur_location NOT LIKE 'MB%'
-				ORDER BY at.cur_location";
+		$sql = $tracking_sql."WHERE at.cur_location NOT LIKE 'MB%' ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
 			/**********
@@ -100,18 +99,7 @@
 			Query to select all records in asset_tracking_hitorical
 			where current location is a mailbox
 		**********/
-		$sql = "SELECT at.pk_id,
-					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
-					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
-					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
-					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
-					at.asset_id, tu.first_name, tu.last_name, tc.company_name,
-					at.cur_location AS current_location, at.prev_location AS previous_location
-				FROM asset_tracking_hitorical AS at
-					INNER JOIN transport_users AS tu ON tu.badge_id = at.asset_id
-					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
-				WHERE at.cur_location LIKE 'MB%'
-				ORDER BY at.cur_location";
+		$sql = $his_tracking_sql."WHERE ath.cur_location LIKE 'MB%' ORDER BY ath.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
 			// If there are records, open a new file
@@ -130,18 +118,7 @@
 			where current location is NOT a mailbox
 			(meaning a person has the asset)
 		**********/
-		$sql = "SELECT at.pk_id,
-					FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
-					FORMAT(at.created_date, 'hh:mm:ss') AS created_time,
-					FORMAT(at.updated_date, 'yyyy-mm-dd') AS updated_date,
-					FORMAT(at.updated_date, 'hh:mm:ss') AS updated_time,
-					at.asset_id, tu.first_name, tu.last_name, tc.company_name,
-					at.cur_location AS current_location, at.prev_location AS previous_location
-				FROM asset_tracking_hitorical AS at
-					INNER JOIN transport_users AS tu ON tu.badge_id = at.asset_id
-					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
-				WHERE at.cur_location NOT LIKE 'MB%'
-				ORDER BY at.cur_location";
+		$sql = $his_tracking_sql."WHERE at.cur_location NOT LIKE 'MB%' ORDER BY at.cur_location";
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
 			/**********
