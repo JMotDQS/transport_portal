@@ -7,7 +7,7 @@
 	$his_tracking_array = [];
 
 	$trackingReport = 'asset_tracking.csv';
-	$hisTrackingReport = 'historical_asset_tracking.csv';
+	$hisTrackingReport = 'asset_tracking_historical.csv';
 
 	$tracking_sql = "SELECT at.pk_id,
 						FORMAT(at.created_date, 'yyyy-mm-dd') AS created_date,
