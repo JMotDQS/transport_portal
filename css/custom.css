@@ -309,18 +309,6 @@ tbody > .lpn-parent2 {
 /****************
 Modal base styling
 ****************/
-.g_dialog {
-	margin-inline: auto;
-	margin-block-start: var(--full-rem);
-	padding: var(--half-rem) var(--full-rem);
-	border: 1px solid var(--navbar-link-color);
-	border-radius: calc(var(--navbar-corner-radius) / 2);
-	width: 90vw;
-}
-dialog::backdrop {
-	backdrop-filter: blur(4px);
-	background-color: rgba(0, 0, 0, .6);
-}
 
 /****************
 Tablet/Desktop Menu

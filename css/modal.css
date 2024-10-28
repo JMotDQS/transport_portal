@@ -1,6 +1,7 @@
 .g_dialog {
 	padding: var(--half-rem);
 	background: white;
+	border: 1px solid var(--navbar-link-color);
 	border-radius: var(--quarter-rem);
 	margin-inline: auto;
 	margin-block-start: calc(var(--full-half-rem) * 3);
