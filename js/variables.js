@@ -1,5 +1,6 @@
 /***** Global Use Variables */
-const myModal = document.querySelector('.g_dialog');
+const userDialog = document.querySelector('.dialog_user');
+const loginDialog = document.querySelector('.dialog_login');
 const click_event = new CustomEvent('click');
 
 var g_TIMER;

@@ -35,11 +35,11 @@ function openModal(param_search_string = '') {
 		checkInput();
 	});
 
-	myModal.showModal();
+	userDialog.showModal();
 }
 
 function closeModal() {
-	myModal.close();
+	userDialog.close();
 	resetModalForm()
 }
 

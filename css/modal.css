@@ -5,11 +5,14 @@
 	border-radius: var(--quarter-rem);
 	margin-inline: auto;
 	margin-block-start: calc(var(--full-half-rem) * 3);
-	width: 50vw;
 }
 .g_dialog::backdrop {
 	background-color: rgba(0, 0, 0, .5);
 	backdrop-filter: blur(calc(var(--quarter-rem) / 4));
+}
+
+.gialog_user {
+	width: 50vw;
 }
 
 .modal-header {
