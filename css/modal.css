@@ -11,7 +11,7 @@
 	backdrop-filter: blur(calc(var(--quarter-rem) / 4));
 }
 
-.dialog-header {
+.modal-header {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	justify-content: space-between;
@@ -23,54 +23,54 @@
 	font-style: italic;
 }*/
 
-.dialog-grid {
+.modal-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
-.dialog-grid > p {
+.modal-grid > p {
     font-style: italic;
     margin-block-end: var(--half-rem);
 }
 
-.dialog-form-element input {
+.modal-form-element input {
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
 }
-.dialog-form-element select {
+.modal-form-element select {
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
 }
 
-.dialog-edit, .dialog-save, .dialog-close, .dialog-create {
+.modal-edit, .modal-save, .modal-close, .modal-create {
 	color: var(--color-lego-yellow-secondary);
 	font-size: var(--full-quarter-rem);
 	font-weight: bold;
   }
-  .dialog-edit {
+  .modal-edit {
 	justify-self: flex-start;
   }
-  .dialog-save {
+  .modal-save {
 	/*visibility: hidden;*/
 	justify-self: center;
   }
-  .dialog-close {
+  .modal-close {
 	justify-self: flex-end;
   }
-  .dialog-print {
+  .modal-print {
 	font-size: var(--full-quarter-rem);
 	cursor: pointer;
 }
 
-.dialog-edit:hover,
-.dialog-edit:focus,
-.dialog-save:hover,
-.dialog-save:focus,
-.dialog-close:hover,
-.dialog-close:focus,
-.dialog-create:hover,
-.dialog-create:focus {
+.modal-edit:hover,
+.modal-edit:focus,
+.modal-save:hover,
+.modal-save:focus,
+.modal-close:hover,
+.modal-close:focus,
+.modal-create:hover,
+.modal-create:focus {
 	color:var(--color-lego-red);
 	cursor: pointer;
 }

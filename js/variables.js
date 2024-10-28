@@ -15,7 +15,6 @@ const g_RESET_TIMEOUT_VAL = 2000;
 const g_APP = 'app';
 const g_NAV = 'nav';
 const g_MODAL = 'modal';
-const g_DIALOG = document.getElementById('dialog');
 const g_VER = '2.2'; // Physical Audit export now includes system report without duplicate VINs
 
 /***** Special Character Replacement Arrays Global Variables */

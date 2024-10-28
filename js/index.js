@@ -4,9 +4,6 @@ $(document).ready(function() {
 		loadPage('nav', g_NAV);
 	});
 
-	console.log("g_DIALOG:", g_DIALOG);
-	g_DIALOG.showModal();
-
 	getCompaniesPromise().then(function(resolve) {
 		console.log("getCompaniesPromise:Success");
 		loadPage('nav', g_NAV);
