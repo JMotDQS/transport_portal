@@ -31,7 +31,7 @@ function userSearch(e) {
 				$('.search-results').html('');
 				$('#app').removeClass('app-feedback');
 				$('#app').html('');
-				loadPage('addUser', g_DIALOG);
+				loadDialog('addUser', g_DIALOG, 'dialog_user');
 
 				return false;
 			} else {

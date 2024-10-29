@@ -1,0 +1,11 @@
+.dialog-login-header {
+	justify-content: center;
+}
+
+.dialog-login-grid {
+	gap: var(--half-rem);
+}
+
+.dialog-login-form-element input {
+	width: 100%;
+}

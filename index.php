@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/navbar.css">
 		<link rel="stylesheet" href="css/dialog.css">
+		<link rel="stylesheet" href="css/dialogUser.css">
+		<link rel="stylesheet" href="css/dialogLogin.css">
 
 	</head>
 

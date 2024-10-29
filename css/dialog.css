@@ -2,7 +2,7 @@
 	padding: var(--half-rem);
 	background: white;
 	border: 1px solid var(--navbar-link-color);
-	border-radius: var(--quarter-rem);
+	border-radius: var(--half-rem);
 	margin-inline: auto;
 	margin-block-start: calc(var(--full-half-rem) * 3);
 }
@@ -11,25 +11,50 @@
 	backdrop-filter: blur(calc(var(--quarter-rem) / 4));
 }
 
+.dialog-header {
+	display: grid;
+	margin-block-end: var(--half-rem);
+	color: var(--navbar-link-hover-color);
+}
+
+.dialog-grid {
+	display: grid;
+}
+.dialog-grid > p {
+    font-style: italic;
+    margin-block-end: var(--half-rem);
+}
+
+.dialog-form-element input {
+	display: block;
+	padding: var(--quarter-rem);
+	margin-inline: auto;
+	border-radius: var(--half-rem);
+}
+.dialog-form-element select {
+	display: block;
+	padding: var(--quarter-rem);
+	margin-inline: auto;
+}
+
 /*******************
-	Dialog buttons
+Dialog buttons
 *******************/
 .dialog-edit, .dialog-save, .dialog-close, .dialog-create {
 	color: var(--color-lego-yellow-secondary);
 	font-size: var(--full-quarter-rem);
 	font-weight: bold;
-  }
-  .dialog-edit {
+}
+.dialog-edit {
 	justify-self: flex-start;
-  }
-  .dialog-save {
-	/*visibility: hidden;*/
+}
+.dialog-save {
 	justify-self: center;
-  }
-  .dialog-close {
+}
+.dialog-close {
 	justify-self: flex-end;
-  }
-  .dialog-print {
+}
+.dialog-print {
 	font-size: var(--full-quarter-rem);
 	cursor: pointer;
 }
