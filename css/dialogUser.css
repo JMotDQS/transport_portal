@@ -1,0 +1,35 @@
+.gialog_user {
+	width: 50vw;
+}
+
+.dialog-user-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-content: space-between;
+	margin-block-end: var(--half-rem);
+    color: var(--navbar-link-hover-color);
+}
+
+.dialog-user-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.dialog-user-grid > p {
+    font-style: italic;
+    margin-block-end: var(--half-rem);
+}
+
+.dialog-user-form-element input {
+	display: block;
+	padding: var(--quarter-rem);
+	margin-inline: auto;
+}
+.dialog-user-form-element select {
+	display: block;
+	padding: var(--quarter-rem);
+	margin-inline: auto;
+}
+
+#dialog_user_asso_button {
+	cursor: pointer;
+}

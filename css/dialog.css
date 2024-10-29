@@ -11,42 +11,9 @@
 	backdrop-filter: blur(calc(var(--quarter-rem) / 4));
 }
 
-.gialog_user {
-	width: 50vw;
-}
-
-.dialog-user-header {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	justify-content: space-between;
-	margin-block-end: var(--half-rem);
-    color: var(--navbar-link-hover-color);
-}
-
-/*#title > p {
-	font-style: italic;
-}*/
-
-.dialog-user-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-}
-.dialog-user-grid > p {
-    font-style: italic;
-    margin-block-end: var(--half-rem);
-}
-
-.dialog-user-form-element input {
-	display: block;
-	padding: var(--quarter-rem);
-	margin-inline: auto;
-}
-.dialog-user-form-element select {
-	display: block;
-	padding: var(--quarter-rem);
-	margin-inline: auto;
-}
-
+/*******************
+	Dialog buttons
+*******************/
 .dialog-edit, .dialog-save, .dialog-close, .dialog-create {
 	color: var(--color-lego-yellow-secondary);
 	font-size: var(--full-quarter-rem);
@@ -76,9 +43,5 @@
 .dialog-create:hover,
 .dialog-create:focus {
 	color:var(--color-lego-red);
-	cursor: pointer;
-}
-
-#dialog_user_asso_button {
 	cursor: pointer;
 }
