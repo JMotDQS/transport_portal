@@ -86,7 +86,7 @@ a {
 button {
 	padding: var(--quarter-rem);
 	margin-block-start: var(--half-rem);
-	border-radius: var(--half-rem);
+	border-radius: var(--quarter-rem);
 	cursor: pointer;
 }
 

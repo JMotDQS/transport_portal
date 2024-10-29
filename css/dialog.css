@@ -13,6 +13,7 @@
 
 .dialog-header {
 	display: grid;
+	border-radius: var(--half-rem);
 	margin-block-end: var(--half-rem);
 	color: var(--navbar-link-hover-color);
 }
@@ -29,7 +30,7 @@
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
-	border-radius: var(--half-rem);
+	border-radius: var(--quarter-rem);
 }
 .dialog-form-element select {
 	display: block;
