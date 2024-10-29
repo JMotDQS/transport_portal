@@ -11,7 +11,7 @@
 	<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/navbar.css">
-		<link rel="stylesheet" href="css/modal.css">
+		<link rel="stylesheet" href="css/dialog.css">
 
 	</head>
 
@@ -25,7 +25,8 @@
 		<div id="app"></div>
 		<div class="search-results"></div>
 
-		<dialog id="modal" class="g_dialog dialog_user"></dialog>
+		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
+		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>
 
 	<!-- JQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -41,6 +42,6 @@
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
 		<script src="js/reports.js"></script>
-		<script src="js/modal.js"></script>
+		<script src="js/dialogUsers.js"></script>
 	</body>
 </html>

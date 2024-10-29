@@ -31,7 +31,7 @@ function userSearch(e) {
 				$('.search-results').html('');
 				$('#app').removeClass('app-feedback');
 				$('#app').html('');
-				loadPage('addUser', g_MODAL);
+				loadPage('addUser', g_DIALOG);
 
 				return false;
 			} else {
@@ -59,7 +59,7 @@ function userSearch(e) {
 
 							if(g_USER_SEARCH[i]['badge_id'] == '' || g_USER_SEARCH[i]['badge_id'] == null) {
 								g_USER_SEARCH[i]['badge_id'] = null;
-								temp_html += `<div class="modal-create" id="new-badge-id_${g_USER_SEARCH[i]['pk_id']}" onclick="generateNewBadge(this)">`;
+								temp_html += `<div class="dialog-create" id="new-badge-id_${g_USER_SEARCH[i]['pk_id']}" onclick="generateNewBadge(this)">`;
 									temp_html += `<i class="fas fa-plus-square"></i>`;
 								temp_html += `</div>`;
 							} else {
@@ -69,7 +69,7 @@ function userSearch(e) {
 							if(!user_active) {
 								temp_html += `<div>User Inactive</div>`;
 							} else {
-								temp_html += `<div class="modal-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" data-index="${i}" onclick="printUser(this)">`;
+								temp_html += `<div class="dialog-print" id="user-print_${g_USER_SEARCH[i]['pk_id']}" data-index="${i}" onclick="printUser(this)">`;
 									temp_html += `<i class="fas fa-print"></i>`;
 								temp_html += `</div>`;
 							}

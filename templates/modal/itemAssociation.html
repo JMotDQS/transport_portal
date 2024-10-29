@@ -88,29 +88,29 @@ label {
 }
 </style>
 
-<header class="modal-header">
+<header class="dialog-user-header">
 	<div id="title">
-		<h3 id="modal-no-results"></h3>
+		<h3 id="dialog-user-no-results"></h3>
 		<h2>Associate</h2>
 	</div>
-	<div class="modal-save invisible" onclick="addUser()">
+	<div class="dialog-save invisible" onclick="addUser()">
 		<i class="far fa-save"></i>
 	</div>
-	<div class="modal-close" onclick="closeModal()">
+	<div class="dialog-close" onclick="closeDialogUser()">
 		<i class="far fa-window-close"></i>
 	</div>
 </header>
-<div class="modal-grid">
+<div class="dialog-user-grid">
 	<p class="fullwidth">all fields required</p>
-	<div class="modal-form-element">
-		<input type="text" id="modal_location_id" name="modal_location_id" placeholder="Scan Location Id">
-		<div class="modal_feedback" id="modal_location_id_feedback"></div>
+	<div class="dialog-user-form-element">
+		<input type="text" id="dialog_user_location_id" name="dialog_user_location_id" placeholder="Scan Location Id">
+		<div class="dialog_user_feedback" id="dialog_user_location_id_feedback"></div>
 	</div>
-	<div class="modal-form-element">
-		<input class=" invisible" type="text" id="modal_asso_items" name="modal_asso_items" placeholder="Scan Item Ids">
-		<div class="modal_feedback invisible" id="modal_asso_items_feedback"></div>
+	<div class="dialog-user-form-element">
+		<input class=" invisible" type="text" id="dialog_user_asso_items" name="dialog_user_asso_items" placeholder="Scan Item Ids">
+		<div class="dialog_user_feedback invisible" id="dialog_user_asso_items_feedback"></div>
 	</div>
-	<div class="modal-form-element">
-		<button class="invisible" id="modal_asso_button">Associate</button>
+	<div class="dialog-user-form-element">
+		<button class="invisible" id="dialog_user_asso_button">Associate</button>
 	</div>
 </div>

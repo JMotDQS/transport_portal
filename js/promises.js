@@ -72,9 +72,9 @@ function addUserPromise(param_file) {
 			cache: false,
 			dataType: 'json',
 			data: {
-				'firstName': dataCleanUp($('#modal_first_name').val()),
-				'lastName': dataCleanUp($('#modal_last_name').val()),
-				'companyId': $('#modal_company').val()
+				'firstName': dataCleanUp($('#dialog_user_first_name').val()),
+				'lastName': dataCleanUp($('#dialog_user_last_name').val()),
+				'companyId': $('#dialog_user_company').val()
 			},
 
 			success: function (data) {

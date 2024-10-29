@@ -40,14 +40,14 @@ function pageCheck(param_page) {
 
 	switch(param_page) {
 		case "addUser":	
-			buildCompanyDropdown('modal_company');
-			openModal(g_NO_SEARCH_RESULTS);
+			buildCompanyDropdown('dialog_user_company');
+			openDialogUser(g_NO_SEARCH_RESULTS);
 			break;
 
 		case "itemAssociation":
-			openModal();
-			setKeyEvents(param_page, 'modal_location_id');
-			$('#modal_asso_button').on('click', recordAssociation);
+			openDialogUser();
+			setKeyEvents(param_page, 'dialog_user_location_id');
+			$('#dialog_user_asso_button').on('click', recordAssociation);
 			break;
 	}
 }

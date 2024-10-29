@@ -1,13 +1,13 @@
 function validateLocation(param_ele, param_page) {
 	console.log("validateLocation called");
-    g_NEW_LOCATION = dataCleanUp($('#modal_location_id').val());
+    g_NEW_LOCATION = dataCleanUp($('#dialog_user_location_id').val());
     if(g_NEW_LOCATION.slice(0, 2) == 'MB' && g_NEW_LOCATION.length == g_MAILBOX_LENGTH) {
         feedBackColoring('#' + param_ele + '_feedback', 'green');
 		$('#' + param_ele + '_feedback').html('Valid Mailbox');
 
-		setKeyEvents(param_page, 'modal_asso_items');
-		$('#modal_asso_items').removeClass('invisible');
-		$('#modal_asso_items').focus();
+		setKeyEvents(param_page, 'dialog_user_asso_items');
+		$('#dialog_user_asso_items').removeClass('invisible');
+		$('#dialog_user_asso_items').focus();
     } else {
         feedBackColoring('#' + param_ele + '_feedback', 'blue');
 		$('#' + param_ele + '_feedback').html('Checking Badge Id...');
@@ -23,9 +23,9 @@ function validateLocation(param_ele, param_page) {
 					feedBackColoring('#' + param_ele + '_feedback', 'green');
 					$('#' + param_ele + '_feedback').html('Valid Badge Id');
 
-					setKeyEvents(param_page, 'modal_asso_items');
-					$('#modal_asso_items').removeClass('invisible');
-					$('#modal_asso_items').focus();
+					setKeyEvents(param_page, 'dialog_user_asso_items');
+					$('#dialog_user_asso_items').removeClass('invisible');
+					$('#dialog_user_asso_items').focus();
 				}
 			}
 		).catch(
@@ -41,12 +41,12 @@ function validateLocation(param_ele, param_page) {
 }
 
 function recordAssociation() {
-	toggleDisabled('modal_asso_button', true);
+	toggleDisabled('dialog_user_asso_button', true);
 
 	recordAssociationPromise('record_association').then(
 		function(resolve) {
 			console.log("Success.");
-			closeModal();
+			closeDialogUser();
 		}
 	).catch(
 		function(reject) {
