@@ -9,3 +9,14 @@
 .dialog-login-form-element input {
 	width: 100%;
 }
+
+.dialog-form-button {
+	padding: var(--quarter-rem);
+	margin-block-start: var(--half-rem);
+	border-radius: var(--half-rem);
+	cursor: pointer;
+}
+.dialog-form-button:hover {
+	background-color: var(--color-navbar-background);
+	color: #ffffff;
+}

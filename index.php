@@ -44,6 +44,7 @@
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
 		<script src="js/reports.js"></script>
-		<script src="js/dialogUsers.js"></script>
+		<script src="js/dialogUser.js"></script>
+		<script src="js/dialogLogin.js"></script>
 	</body>
 </html>

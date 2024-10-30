@@ -1,6 +1,12 @@
 /***** Global Use Variables */
 const userDialog = document.querySelector('.dialog_user');
 const loginDialog = document.querySelector('.dialog_login');
+const preventLoginClose = true;
+loginDialog.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape' && preventLoginClose) {
+		event.preventDefault();
+	}
+})
 const click_event = new CustomEvent('click');
 
 var g_TIMER;

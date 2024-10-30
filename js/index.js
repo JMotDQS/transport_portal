@@ -1,19 +1,19 @@
 $(document).ready(function() {
-	$('.nav-logo').on('click', function() {
+	/*$('.nav-logo').on('click', function() {
 		loadPage($(this).data('page'));
 		loadPage('nav', g_NAV);
-	});
+	});*/
 
 	loadDialog('login', g_DIALOG, 'dialog_login');
 
-	getCompaniesPromise().then(function(resolve) {
+	/*getCompaniesPromise().then(function(resolve) {
 		console.log("getCompaniesPromise:Success");
 		loadPage('nav', g_NAV);
 	}).catch(function(reject) {
 		console.log("Fail");
 	}).finally(function() {
 		console.log("Moving On.");
-	});
+	});*/
 });
 
 function loadPage(param_template, param_element = 'app') {
@@ -39,7 +39,6 @@ function loadPage(param_template, param_element = 'app') {
 	}
 }
 function loadDialog(param_template, param_element, param_load_ele) {
-	console.log("loadDialog:param_template:", param_template);
 	var temp_dir = "templates/" + param_element + "/";
 	if (param_template != '') {
 		temp_dir += param_template + ".html?nc=" + (Math.random() * 1000000);
