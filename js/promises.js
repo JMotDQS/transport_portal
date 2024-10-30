@@ -1,4 +1,36 @@
 /********************************************************
+	User Login array Promises Start
+********************************************************/
+function userLoginCheckPromise(param_file, param_email, param_pw) {
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'userEmail': param_email,
+				'userPW': param_pw
+			},
+
+			success: function (data) {
+				resolve(data);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				consoleReporting(xhr)
+				consoleReporting("Details: " + desc + "\nError:" + err);
+				consoleReporting("userLoginCheckPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	User Login array Promises End
+********************************************************/
+
+/********************************************************
 	Set company array Promises Start
 ********************************************************/
 function getCompaniesPromise() {

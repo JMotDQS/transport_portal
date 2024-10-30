@@ -74,6 +74,9 @@ function pageCheck(param_page) {
 		case "login":
 			console.log("Do stuff");
 			loginDialog.showModal();
+			document.getElementById('dialog-form-button').addEventListener('click', () => {
+				userLoginCheck();
+			})
 			break;
 	}
 }
@@ -144,4 +147,8 @@ function setKeyEvents(param_page, param_element, param_multiplier = 1) {
 
 function clearTimer(param_timer) {
 	window.clearTimeout(param_timer); // prevent errant multiple timeouts from being generated
+}
+
+function consoleReporting(param) {
+	console.log(param);
 }
