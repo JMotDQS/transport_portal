@@ -17,7 +17,6 @@ $(document).ready(function() {
 });
 
 function loadPage(param_template, param_element = 'app') {
-	console.log("loadPage:param_template:", param_template);
 	var temp_dir = "templates/" + param_element + "/";
 	if (param_template != '') {
 		temp_dir += param_element + ".html?nc=" + (Math.random() * 1000000);
@@ -38,8 +37,8 @@ function loadPage(param_template, param_element = 'app') {
 		});
 	}
 }
-function loadDialog(param_template, param_element, param_load_ele) {
-	var temp_dir = "templates/" + param_element + "/";
+function loadDialog(param_template, param_template_dir, param_load_ele) {
+	var temp_dir = "templates/" + param_template_dir + "/";
 	if (param_template != '') {
 		temp_dir += param_template + ".html?nc=" + (Math.random() * 1000000);
 

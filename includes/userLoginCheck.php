@@ -13,8 +13,9 @@
 	if ($conn) {
 		$sql = "SELECT *
 				FROM transport_users
-				WHERE email_address IS '".$_POST['userEmail']."'
-					AND password IS '".$_POST['userPW']."'";
+				WHERE email_address = '".$_POST['userEmail']."'
+					AND password = '".$_POST['userPW']."'";
+		
 		$res = sqlsrv_query($conn, $sql);
 		
 		if ($res) {
