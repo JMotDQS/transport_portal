@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/dialog.css">
 		<link rel="stylesheet" href="css/dialogUser.css">
 		<link rel="stylesheet" href="css/dialogLogin.css">
+		<link rel="stylesheet" href="css/dialogBulkAddUser.css">
 
 	</head>
 
@@ -46,5 +47,6 @@
 		<script src="js/reports.js"></script>
 		<script src="js/dialogUser.js"></script>
 		<script src="js/dialogLogin.js"></script>
+		<script src="js/dialogBulkAddUser.js"></script>
 	</body>
 </html>

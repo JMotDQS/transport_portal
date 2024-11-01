@@ -1,0 +1,18 @@
+.dialog-bulk-add-user-grid {
+	gap: var(--half-rem);
+}
+
+.dialog-bulk-add-user-form-element input {
+	width: 100%;
+}
+
+.dialog-form-button {
+	padding: var(--quarter-rem);
+	margin-block-start: var(--half-rem);
+	border-radius: var(--half-rem);
+	cursor: pointer;
+}
+.dialog-form-button:hover {
+	background-color: var(--color-navbar-background);
+	color: #ffffff;
+}
