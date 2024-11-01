@@ -1,6 +1,7 @@
 /***** Global Use Variables */
 const userDialog = document.querySelector('.dialog_user');
 const loginDialog = document.querySelector('.dialog_login');
+const bulkAddUserDialog = document.querySelector('.dialog_bulk_add_user');
 const preventLoginClose = true;
 loginDialog.addEventListener('keydown', (event) => {
     if(event.key === 'Escape' && preventLoginClose) {

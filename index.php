@@ -30,6 +30,7 @@
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>
+		<dialog id="dialog_bulk_add_user" class="g_dialog dialog_bulk_add_user"></dialog>
 
 	<!-- JQuery CDN -->
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

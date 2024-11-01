@@ -5,15 +5,6 @@ $(document).ready(function() {
 	});*/
 
 	loadDialog('login', g_DIALOG, 'dialog_login');
-
-	/*getCompaniesPromise().then(function(resolve) {
-		console.log("getCompaniesPromise:Success");
-		loadPage('nav', g_NAV);
-	}).catch(function(reject) {
-		console.log("Fail");
-	}).finally(function() {
-		console.log("Moving On.");
-	});*/
 });
 
 function loadPage(param_template, param_element = 'app') {
@@ -77,7 +68,21 @@ function pageCheck(param_page) {
 				userLoginCheck();
 			})
 			break;
+
+		case "bulkAddUser":
+			console.log("Do stuff");
+			buildCompanyDropdown('dialog_bulk_add_user_company');
+			bulkAddUserDialog.showModal();
+			break;
 	}
+}
+
+function buildCompanyDropdown(param_element) {
+	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
+	for(i = 0; i < g_COMPANIES.length; i++) {
+		temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
+	}
+	$('#' + param_element).html(temp_html);
 }
 
 function dataCleanUp(param_string) {

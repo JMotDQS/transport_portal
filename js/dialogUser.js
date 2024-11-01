@@ -65,14 +65,6 @@ function checkDialogUserInput() {
 	}
 }
 
-function buildCompanyDropdown(param_element) {
-	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
-	for(i = 0; i < g_COMPANIES.length; i++) {
-		temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
-	}
-	$('#' + param_element).html(temp_html);
-}
-
 function generateNewBadge(ele) {
 	var chosen_user_id = parseInt(ele.id.substr( ( parseInt(ele.id.indexOf('_') + 1) ) ));
 
