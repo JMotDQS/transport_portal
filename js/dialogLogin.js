@@ -1,4 +1,4 @@
-function userLoginCheck() {
+function userLoginCheck(e) {
 	var userEmail = dataCleanUp($('#login_email').val());
 	var userPW = dataCleanUp($('#login_password').val());
 

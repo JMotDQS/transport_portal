@@ -75,7 +75,12 @@ function pageCheck(param_page) {
 			loginDialog.showModal();
 			document.getElementById('dialog-form-button').addEventListener('click', () => {
 				userLoginCheck();
-			})
+			});
+			document.getElementById('dialog-login-grid').addEventListener('keydown', (event) => {
+				if(event.key === 'Enter') {
+					userLoginCheck();
+				}
+			});
 			break;
 	}
 }
