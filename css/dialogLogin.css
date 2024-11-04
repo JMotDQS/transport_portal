@@ -6,18 +6,6 @@
 	width: 100%;
 }
 
-.dialog-form-button {
-	width: 100%;
-	padding: var(--quarter-rem);
-	margin-block-start: var(--half-rem);
-	border-radius: var(--half-rem);
-	cursor: pointer;
-}
-.dialog-form-button:hover {
-	background-color: var(--color-navbar-background);
-	color: #ffffff;
-}
-
 .dialog-login-error {
 	display: none;
 	font-size: var(--half_rem);

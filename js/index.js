@@ -1,9 +1,4 @@
 $(document).ready(function() {
-	/*$('.nav-logo').on('click', function() {
-		loadPage($(this).data('page'));
-		loadPage('nav', g_NAV);
-	});*/
-
 	loadDialog('login', g_DIALOG, 'dialog_login');
 });
 
@@ -62,7 +57,6 @@ function pageCheck(param_page) {
 			break;
 
 		case "login":
-			console.log("Do stuff");
 			loginDialog.showModal();
 			document.getElementById('dialog-form-button').addEventListener('click', () => {
 				userLoginCheck();
@@ -75,8 +69,12 @@ function pageCheck(param_page) {
 			break;
 
 		case "bulkAddUser":
-			console.log("Do stuff");
 			buildCompanyDropdown('dialog_bulk_add_user_company');
+			document.getElementById('dialog-bulk-add-user-button').addEventListener('click', () => {
+				console.log("Uploading file");
+			});
+
+			setdialogBulkAddUserEventListenerAssociations();
 			bulkAddUserDialog.showModal();
 			break;
 	}
@@ -85,7 +83,7 @@ function pageCheck(param_page) {
 function buildCompanyDropdown(param_element) {
 	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
 	for(i = 0; i < g_COMPANIES.length; i++) {
-		temp_html += `<option value="${g_COMPANIES[i]['pk_id']}">${g_COMPANIES[i]['company_name']}</option>`
+		temp_html += `<option value="${g_COMPANIES[i]['abb_name']}">${g_COMPANIES[i]['company_name']}</option>`
 	}
 	$('#' + param_element).html(temp_html);
 }

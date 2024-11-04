@@ -37,6 +37,19 @@
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
+	border-radius: var(--quarter-rem);
+}
+
+.dialog-form-button {
+	width: 100%;
+	padding: var(--quarter-rem);
+	margin-block-start: var(--half-rem);
+	border-radius: var(--half-rem);
+	cursor: pointer;
+}
+.dialog-form-button:not(.button-disabled):hover {
+	background-color: var(--color-navbar-background);
+	color: #ffffff;
 }
 
 /*******************
