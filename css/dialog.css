@@ -27,17 +27,23 @@
     margin-block-end: var(--half-rem);
 }
 
+.dialog-grid-gap {
+	gap: var(--half-rem);
+}
+
 .dialog-form-element input {
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
 	border-radius: var(--quarter-rem);
+	width: 100%;
 }
 .dialog-form-element select {
 	display: block;
 	padding: var(--quarter-rem);
 	margin-inline: auto;
 	border-radius: var(--quarter-rem);
+	width: 100%;
 }
 
 .dialog-form-button {

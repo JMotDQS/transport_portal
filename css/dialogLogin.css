@@ -1,11 +1,3 @@
-.dialog-login-grid {
-	gap: var(--half-rem);
-}
-
-.dialog-login-form-element input {
-	width: 100%;
-}
-
 .dialog-login-error {
 	display: none;
 	font-size: var(--half_rem);
