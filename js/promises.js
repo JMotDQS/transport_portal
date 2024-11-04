@@ -34,6 +34,7 @@ function userLoginCheckPromise(param_file, param_email, param_pw) {
 	Set company array Promises Start
 ********************************************************/
 function getCompaniesPromise() {
+	console.log("getCompaniesPromise() called");
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/getCompanies.php",

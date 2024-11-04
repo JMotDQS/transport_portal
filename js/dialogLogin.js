@@ -4,26 +4,27 @@ function userLoginCheck(e) {
 
 	userLoginCheckPromise('userLoginCheck', userEmail, userPW).then(function(resolve) {
 		console.log("userLoginCheckPromise:Success");
-		console.log("resolve.length:", resolve.length);
 
 		if(resolve.length == 0) {
-			console.log("No Match");
+			document.getElementById('dialog-login-error').textContent = 'email/password do not match for admin user';
+			document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
 		} else {
-			console.log("resolve:", resolve);
-			if(resolve[0]['is_admin'] === 1) {
-				console.log("You are an Admin!");
+			if(parseInt(resolve[0]['is_admin']) === 1) {
+				document.getElementById('dialog-login-error').classList.remove('dialog-login-error-show');
+				document.getElementById('dialog-login-error').textContent = '';
 
 				getCompaniesPromise().then(function(resolve) {
 					console.log("getCompaniesPromise:Success");
 					loadPage('nav', g_NAV);
 				}).catch(function(reject) {
-					console.log("Fail");
+					console.log("reject:", reject);
 				}).finally(function() {
 					console.log("Moving On.");
 				});
 				closeDialogLogin();
 			} else {
-				console.log("You are NOT an Admin...");
+				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin';
+				document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
 			}
 		}
 
@@ -35,5 +36,6 @@ function userLoginCheck(e) {
 }
 
 function closeDialogLogin() {
+	console.log("closeDialogLogin() called");
 	loginDialog.close();
 }
