@@ -7,10 +7,12 @@ function userLoginCheck(e) {
 
 		if(resolve.length == 0) {
 			document.getElementById('dialog-login-error').textContent = 'email/password do not match for admin user';
+			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
 			document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
 		} else {
 			if(parseInt(resolve[0]['is_admin']) === 1) {
 				document.getElementById('dialog-login-error').classList.remove('dialog-login-error-show');
+				feedBackColoring(document.getElementById('dialog-login-error'));
 				document.getElementById('dialog-login-error').textContent = '';
 
 				getCompaniesPromise().then(function(resolve) {
@@ -24,6 +26,7 @@ function userLoginCheck(e) {
 				closeDialogLogin();
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin';
+				feedBackColoring(document.getElementById('dialog-login-error'), 'red');
 				document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
 			}
 		}

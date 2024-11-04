@@ -205,15 +205,15 @@ input:checked + .slider:before {
 
 .feedback-red {
 	color: #ff0000;
-	font-weight: 600;
+	font-weight: 700;
 }
 .feedback-green {
 	color: #078a07;
-	font-weight: 600;
+	font-weight: 700;
 }
 .feedback-blue {
 	color: #3e7fe7;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 table,

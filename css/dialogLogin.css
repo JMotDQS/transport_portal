@@ -9,8 +9,8 @@
 .dialog-login-error {
 	display: none;
 	font-size: var(--half_rem);
-	font-weight: 700;
-	color: var(--color-inactive-user);
+	/*font-weight: 700;
+	color: var(--color-inactive-user);*/
 }
 .dialog-login-error-show {
 	display: block;
