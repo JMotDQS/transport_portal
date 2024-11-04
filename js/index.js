@@ -71,7 +71,7 @@ function pageCheck(param_page) {
 		case "bulkAddUser":
 			buildCompanyDropdown('dialog_bulk_add_user_company');
 			document.getElementById('dialog-bulk-add-user-button').addEventListener('click', () => {
-				console.log("Uploading file");
+				sendBulkAddUserData();
 			});
 
 			setdialogBulkAddUserEventListenerAssociations();

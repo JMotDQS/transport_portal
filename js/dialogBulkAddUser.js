@@ -36,3 +36,32 @@ function setDialogBulkAddUserButton() {
 		myButton.classList.add('button-disabled');
 	}
 }
+
+function sendBulkAddUserData() {
+	console.log('sendBulkAddUserData() called');
+	const apiEndpoint = 'https://identity-api-stg.dqstaff.com/Transport/UploadTransportUsersFile';
+	const csvFile = document.getElementById('dialog_bullk_add_user_file').files[0];
+	const companyCode = document.getElementById('dialog_bulk_add_user_company').value;
+	const formData = new FormData();
+	formData.set('file', csvFile, csvFile.name);
+	formData.set('companyCode', companyCode);
+
+	/*fetch(apiEndpoint, {
+		method: POST,
+		headers: {
+			'Content-Type': 'multipart/form-data'	
+			'SessionKey': 'E3DDA602-C414-41B7-9E4B-73A4EDD896A3',
+			'ApplicationId': '33E591F9-F7C1-4EC3-8B5A-D48FEEDFA9FA'
+		},
+		body: formData
+	})
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);
+		alert('File uploaded successfully!');
+	})
+	.catch(error => {
+		console.error(error);
+		alert('Error uploading file');
+	});*/
+}
