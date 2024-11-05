@@ -48,11 +48,11 @@ function sendBulkAddUserData() {
 
 	fetch(apiEndpoint, {
 		method: 'POST',
-		headers: {
+		/*headers: {
 			'Content-Type': 'multipart/form-data',
 			'SessionKey': 'E3DDA602-C414-41B7-9E4B-73A4EDD896A3',
 			'ApplicationId': '33E591F9-F7C1-4EC3-8B5A-D48FEEDFA9FA'
-		},
+		},*/
 		body: formData
 	})
 	.then(response => response.json())
