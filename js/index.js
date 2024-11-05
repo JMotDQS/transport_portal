@@ -133,6 +133,27 @@ function feedBackColoring(param_ele, param_color = 'default') {
 	}
 }
 
+function sliderSet(param_id, param_copy) {
+	if($('#' + param_id).is(':checked')) {
+		$('#active-label_' + param_id).removeClass('user-inactive');
+		$('#active-label_' + param_id).html('Is ' + param_copy);
+	} else {
+		$('#active-label_' + param_id).addClass('user-inactive');
+		$('#active-label_' + param_id).html('Not ' + param_copy);
+	}
+}
+
+function sliderClicked(e, param_copy) {
+	e.preventDefault;
+	if($('#' + e).is(':checked')) {
+		$('#active-label_' + e).removeClass('user-inactive');
+		$('#active-label_' + e).html('Is ' + param_copy);
+	} else {
+		$('#active-label_' + e).addClass('user-inactive');
+		$('#active-label_' + e).html('Not ' + param_copy);
+	}
+}
+
 function toggleDisabled(param_ele, param_disabled) {
     $(param_ele).prop('disabled', param_disabled);
 }

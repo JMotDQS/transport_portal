@@ -48,8 +48,8 @@ function userSearch(e) {
 								temp_html += `<div>Last, First Name</div>`;
 								temp_html += `<div>Badge</div>`;
 								temp_html += `<div>Email</div>`;
-								temp_html += `<div>Admin</div>`;
-								temp_html += `<div>Active</div>`;
+								temp_html += `<div class="active-label" id="active-label_isAdmin_${g_USER_SEARCH[i]['pk_id']}">Not Admin</div>`;
+								temp_html += `<div class="active-label" id="active-label_isActive_${g_USER_SEARCH[i]['pk_id']}">Not Active</div>`;
 								temp_html += `<div>Print QR</div>`;
 						temp_html += `</div>`;
 
@@ -70,8 +70,20 @@ function userSearch(e) {
 							}
 
 							temp_html += `<div>${g_USER_SEARCH[i]['email_address']}</div>`;
-							temp_html += `<div>${g_USER_SEARCH[i]['is_admin']}</div>`;
-							temp_html += `<div>${g_USER_SEARCH[i]['is_active']}</div>`;
+
+							temp_html += `<div>`;
+								temp_html += `<label class="switch">`;
+									temp_html += `<input type="checkbox" id="isAdmin_${g_USER_SEARCH[i]['pk_id']}" name="isAdmin_${g_USER_SEARCH[i]['pk_id']}" onClick="sliderClicked(this.id, 'Admin')">`;
+									temp_html += `<span class="slider round"></span>`;
+								temp_html += `</label>`;
+							temp_html += `</div>`;
+
+							temp_html += `<div>`;
+								temp_html += `<label class="switch">`;
+									temp_html += `<input type="checkbox" id="isActive_${g_USER_SEARCH[i]['pk_id']}" name="isActive_${g_USER_SEARCH[i]['pk_id']}" onClick="sliderClicked(this.id, 'Active')">`;
+									temp_html += `<span class="slider round"></span>`;
+								temp_html += `</label>`;
+							temp_html += `</div>`;
 
 							if(!user_active) {
 								temp_html += `<div>User Inactive</div>`;
@@ -89,6 +101,23 @@ function userSearch(e) {
 				$('#app').html(g_USER_SEARCH.length + ' results found.');
 			}
 			$('.search-results').html(temp_html);
+
+			for(i = 0; i <  g_USER_SEARCH.length; i++) {
+				if(parseInt(g_USER_SEARCH[i]['is_admin']) === 1) {
+					$('#isAdmin_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", true );
+				} else {
+					$('#isAdmin_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", false );
+				}
+
+				if(parseInt(g_USER_SEARCH[i]['is_active']) === 1) {
+					$('#isActive_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", true );
+				} else {
+					$('#isActive_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", false );
+				}
+	
+				sliderSet('isAdmin_' + g_USER_SEARCH[i]['pk_id'], 'Admin');
+				sliderSet('isActive_' + g_USER_SEARCH[i]['pk_id'], 'Active');
+			}
 
 		}).catch(function(reject) {
 			console.log("Fail");
