@@ -3,7 +3,7 @@
 
 	$return_array = [];
 	$badge_array = [];
-    $comp_abb = '';
+	$comp_abb = '';
 	$temp_badge_num;
 	$temp_badge_num_new;
 	$new_badge_num = '';

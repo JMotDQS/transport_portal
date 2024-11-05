@@ -14,6 +14,7 @@ function userLoginCheck(e) {
 				document.getElementById('dialog-login-error').classList.remove('dialog-login-error-show');
 				feedBackColoring(document.getElementById('dialog-login-error'));
 				document.getElementById('dialog-login-error').textContent = '';
+				g_CURRENT_LOGIN_USER_ID = parseInt(resolve[0]['pk_id']);
 
 				getCompaniesPromise().then(function(resolve) {
 					console.log("getCompaniesPromise:Success");
