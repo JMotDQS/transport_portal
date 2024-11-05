@@ -369,6 +369,10 @@ input:checked + .slider:before {
 	color: red;
 }
 
+.no-pointer {
+	cursor: default;
+}
+
 /****************
 Dialog base styling
 ****************/

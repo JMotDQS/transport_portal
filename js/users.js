@@ -74,14 +74,14 @@ function userSearch(e) {
 							temp_html += `<div>`;
 								temp_html += `<label class="switch">`;
 									temp_html += `<input type="checkbox" id="isAdmin_${g_USER_SEARCH[i]['pk_id']}" name="isAdmin_${g_USER_SEARCH[i]['pk_id']}" onClick="sliderClicked(this.id, 'Admin')">`;
-									temp_html += `<span class="slider round"></span>`;
+									temp_html += `<span id="isAdmin_span_${g_USER_SEARCH[i]['pk_id']}" class="slider round"></span>`;
 								temp_html += `</label>`;
 							temp_html += `</div>`;
 
 							temp_html += `<div>`;
 								temp_html += `<label class="switch">`;
 									temp_html += `<input type="checkbox" id="isActive_${g_USER_SEARCH[i]['pk_id']}" name="isActive_${g_USER_SEARCH[i]['pk_id']}" onClick="sliderClicked(this.id, 'Active')">`;
-									temp_html += `<span class="slider round"></span>`;
+									temp_html += `<span id="isActive_span_${g_USER_SEARCH[i]['pk_id']}" class="slider round"></span>`;
 								temp_html += `</label>`;
 							temp_html += `</div>`;
 
@@ -110,6 +110,9 @@ function userSearch(e) {
 				}
 				if(parseInt(g_USER_SEARCH[i]['pk_id']) === g_CURRENT_LOGIN_USER_ID) {
 					toggleDisabled('#isAdmin_' + g_USER_SEARCH[i]['pk_id'], true);
+					document.getElementById('isAdmin_span_' + g_USER_SEARCH[i]['pk_id']).classList.add('no-pointer');
+				} else {
+					document.getElementById('isAdmin_span_' + g_USER_SEARCH[i]['pk_id']).classList.remove('no-pointer');
 				}
 
 				if(parseInt(g_USER_SEARCH[i]['is_active']) === 1) {
@@ -119,6 +122,9 @@ function userSearch(e) {
 				}
 				if(parseInt(g_USER_SEARCH[i]['pk_id']) === g_CURRENT_LOGIN_USER_ID) {
 					toggleDisabled('#isActive_' + g_USER_SEARCH[i]['pk_id'], true);
+					document.getElementById('isActive_span_' + g_USER_SEARCH[i]['pk_id']).classList.add('no-pointer');
+				} else {
+					document.getElementById('isActive_span_' + g_USER_SEARCH[i]['pk_id']).classList.remove('no-pointer');
 				}
 	
 				sliderSet('isAdmin_' + g_USER_SEARCH[i]['pk_id'], 'Admin');
