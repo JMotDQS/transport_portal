@@ -108,11 +108,17 @@ function userSearch(e) {
 				} else {
 					$('#isAdmin_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", false );
 				}
+				if(parseInt(g_USER_SEARCH[i]['pk_id']) === g_CURRENT_LOGIN_USER_ID) {
+					toggleDisabled('#isAdmin_' + g_USER_SEARCH[i]['pk_id'], true);
+				}
 
 				if(parseInt(g_USER_SEARCH[i]['is_active']) === 1) {
 					$('#isActive_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", true );
 				} else {
 					$('#isActive_' + g_USER_SEARCH[i]['pk_id']).prop( "checked", false );
+				}
+				if(parseInt(g_USER_SEARCH[i]['pk_id']) === g_CURRENT_LOGIN_USER_ID) {
+					toggleDisabled('#isActive_' + g_USER_SEARCH[i]['pk_id'], true);
 				}
 	
 				sliderSet('isAdmin_' + g_USER_SEARCH[i]['pk_id'], 'Admin');

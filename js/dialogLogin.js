@@ -12,6 +12,7 @@ function userLoginCheck(e) {
 			if(parseInt(resolve[0]['is_admin']) === 1) {
 				document.getElementById('dialog-login-error').classList.remove('dialog-login-error-show');
 				document.getElementById('dialog-login-error').textContent = '';
+				g_CURRENT_LOGIN_USER_ID = parseInt(resolve[0]['pk_id']);
 
 				getCompaniesPromise().then(function(resolve) {
 					console.log("getCompaniesPromise:Success");

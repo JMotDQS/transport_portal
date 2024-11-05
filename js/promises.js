@@ -133,9 +133,6 @@ function addUserPromise(param_file) {
 	Slider Update User Promises Start
 ********************************************************/
 function sliderUpdateRecordPromise(param_file, param_index, param_field, param_value) {
-	console.log("sliderUpdateRecordPromise:param_field:", param_field);
-	console.log("sliderUpdateRecordPromise:param_value:", param_value);
-	console.log("sliderUpdateRecordPromise:param_index:", param_index);
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",
