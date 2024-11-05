@@ -130,6 +130,42 @@ function addUserPromise(param_file) {
 ********************************************************/
 
 /********************************************************
+	Slider Update User Promises Start
+********************************************************/
+function sliderUpdateRecordPromise(param_file, param_index, param_field, param_value) {
+	console.log("sliderUpdateRecordPromise:param_field:", param_field);
+	console.log("sliderUpdateRecordPromise:param_value:", param_value);
+	console.log("sliderUpdateRecordPromise:param_index:", param_index);
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'indexId': param_index,
+				'field': param_field,
+				'newValue': param_value
+			},
+
+			success: function (data) {
+				resolve(true);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				console.log(xhr)
+				console.log("Details: " + desc + "\nError:" + err);
+				console.log("sliderUpdateRecordPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	Slider Update User Promises End
+********************************************************/
+
+/********************************************************
 	Validate Badge Promises Start
 ********************************************************/
 function validateLocationPromise(param_file, param_badge) {

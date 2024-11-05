@@ -145,13 +145,28 @@ function sliderSet(param_id, param_copy) {
 
 function sliderClicked(e, param_copy) {
 	e.preventDefault;
+	console.log("e:", e);
+	let temp_id = parseInt(e.slice(e.indexOf('_') + 1));
+	let temp_field = param_copy;
+	let temp_value;
+	console.log("temp_id:", temp_id);
 	if($('#' + e).is(':checked')) {
 		$('#active-label_' + e).removeClass('user-inactive');
 		$('#active-label_' + e).html('Is ' + param_copy);
+		temp_value = 1;
 	} else {
 		$('#active-label_' + e).addClass('user-inactive');
 		$('#active-label_' + e).html('Not ' + param_copy);
+		temp_value = 0;
 	}
+
+	sliderUpdateRecordPromise('sliderUpdateUser', temp_id, temp_field, temp_value).then(function(resolve) {
+		userSearch(click_event);
+	}).catch(function(reject) {
+		//console.log("Search Loaded!");
+	}).finally(function() {
+		//console.log("Fresh Search.");
+	});
 }
 
 function toggleDisabled(param_ele, param_disabled) {
