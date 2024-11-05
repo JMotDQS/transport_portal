@@ -47,6 +47,9 @@ function userSearch(e) {
 						temp_html += `<div class="card-grid card-titles">`;
 								temp_html += `<div>Last, First Name</div>`;
 								temp_html += `<div>Badge</div>`;
+								temp_html += `<div>Email</div>`;
+								temp_html += `<div>Admin</div>`;
+								temp_html += `<div>Active</div>`;
 								temp_html += `<div>Print QR</div>`;
 						temp_html += `</div>`;
 
@@ -65,6 +68,10 @@ function userSearch(e) {
 							} else {
 								temp_html += `<div>${g_USER_SEARCH[i]['badge_id']}</div>`;
 							}
+
+							temp_html += `<div>${g_USER_SEARCH[i]['email_address']}</div>`;
+							temp_html += `<div>${g_USER_SEARCH[i]['is_admin']}</div>`;
+							temp_html += `<div>${g_USER_SEARCH[i]['is_active']}</div>`;
 
 							if(!user_active) {
 								temp_html += `<div>User Inactive</div>`;
