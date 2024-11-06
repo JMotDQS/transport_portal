@@ -1,5 +1,5 @@
 /********************************************************
-	User Login array Promises Start
+	User Login Promises Start
 ********************************************************/
 function userLoginCheckPromise(param_file, param_email, param_pw) {
 	return new Promise(function(resolve, reject) {
@@ -27,7 +27,39 @@ function userLoginCheckPromise(param_file, param_email, param_pw) {
 	});
 }
 /********************************************************
-	User Login array Promises End
+	User Login Promises End
+********************************************************/
+
+/********************************************************
+	User Update Password Promises Start
+********************************************************/
+function updatePasswordCheckPromise(param_file, param_pw, param_user_id) {
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: "includes/" + param_file + ".php",
+			type: 'POST',
+			cache: false,
+			dataType: 'json',
+			data: {
+				'newPW': param_pw,
+				'userId': param_user_id
+			},
+
+			success: function (data) {
+				resolve(data[0]['change_password']);
+			},
+
+			error: function(xhr, desc, err) {
+				reject(false);
+				consoleReporting(xhr)
+				consoleReporting("Details: " + desc + "\nError:" + err);
+				consoleReporting("updatePasswordCheckPromise():Something broke");
+			}
+		});
+	});
+}
+/********************************************************
+	User Update Password Promises End
 ********************************************************/
 
 /********************************************************

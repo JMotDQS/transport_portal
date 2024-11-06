@@ -18,20 +18,17 @@ function userLoginCheck(e) {
 
 				if(parseInt(resolve[0]['change_password']) === 1) {
 					loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
+				} else {
+					getCompaniesPromise().then(function(resolve) {
+						console.log("getCompaniesPromise:Success");
+						loadPage('nav', g_NAV);
+						closeDialogLogin();
+					}).catch(function(reject) {
+						console.log("reject:", reject);
+					}).finally(function() {
+						console.log("Moving On.");
+					});
 				}
-
-				/*if(getCompanies()) {
-					loadPage('nav', g_NAV);
-				}*/
-				/*getCompaniesPromise().then(function(resolve) {
-					console.log("getCompaniesPromise:Success");
-					loadPage('nav', g_NAV);
-				}).catch(function(reject) {
-					console.log("reject:", reject);
-				}).finally(function() {
-					console.log("Moving On.");
-				});*/
-				//closeDialogLogin();
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin and/or Active';
 				feedBackColoring(document.getElementById('dialog-login-error'), 'red');
