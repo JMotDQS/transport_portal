@@ -78,7 +78,7 @@ function pageCheck(param_page) {
 				updatePasswordCheck();
 			});
 			document.getElementById('dialog-password-grid').addEventListener('keydown', (event) => {
-				if(event.key === 'Enter' && !document.getElementById('dialog-form-button').disabled) {
+				if(event.key === 'Enter' && !checkIfDisabled('dialog-form-button')) {
 					updatePasswordCheck();
 				}
 			});
@@ -209,6 +209,10 @@ function toggleDisplay(param_ele, param_class, param_flag) {
 	} else {
 		$(param_ele).removeClass(param_class);
 	}
+}
+
+function checkIfDisabled(param_element) {
+	return document.getElementById(param_element).disabled;
 }
 
 function setKeyEvents(param_page, param_element, param_multiplier = 1) {
