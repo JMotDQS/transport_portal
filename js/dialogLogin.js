@@ -32,7 +32,7 @@ function userLoginCheck(e) {
 				}).finally(function() {
 					console.log("Moving On.");
 				});*/
-				closeDialogLogin();
+				//closeDialogLogin();
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin and/or Active';
 				feedBackColoring(document.getElementById('dialog-login-error'), 'red');

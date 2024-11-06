@@ -68,6 +68,19 @@ function pageCheck(param_page) {
 			});
 			break;
 
+		case "passwordUpdate":
+			setKeyEvents(param_page, 'update_password');
+			setKeyEvents(param_page, 'update_password_conf');
+			document.getElementById('dialog-form-button').addEventListener('click', () => {
+				//userLoginCheck();
+			});
+			document.getElementById('dialog-password-grid').addEventListener('keydown', (event) => {
+				if(event.key === 'Enter') {
+					//userLoginCheck();
+				}
+			});
+			break;
+
 		case "bulkAddUser":
 			buildCompanyDropdown('dialog_bulk_add_user_company');
 			document.getElementById('dialog-bulk-add-user-button').addEventListener('click', () => {

@@ -5,6 +5,9 @@ function keyPressEvent(e) {
 	switch(e.data.page) {
 		case 'itemAssociation':
 			break;
+
+		case 'passwordUpdate':
+			break;
 	}
 }
 function keyUpEvent(e) {
@@ -31,6 +34,25 @@ function keyUpEvent(e) {
 					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 					break;
 			}
+			break;
+
+		case 'passwordUpdate':
+			g_TIMER = window.setTimeout(() => {
+				var pw = document.getElementById('update_password').value;
+				var pwc = document.getElementById('update_password_conf').value;
+
+				if(pw === pwc) {
+					feedBackColoring(document.getElementById('dialog-login-error'), 'green');
+					document.getElementById('dialog-login-error').value = 'Passwords match!';
+					document.getElementById('dialog-login-error').classList.add('dialog-error-show');
+				} else {
+					feedBackColoring(document.getElementById('dialog-login-error'), 'red');
+					document.getElementById('dialog-login-error').value = 'Passwords MUST match!';
+					document.getElementById('dialog-login-error').classList.add('dialog-error-show');
+				}
+				//toggleDisabled('#' + e.currentTarget.id, true);
+				//validateLocation(e.data.inputEl, e.data.page);
+			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 			break;
 	}
 }
