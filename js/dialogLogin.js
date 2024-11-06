@@ -17,17 +17,21 @@ function userLoginCheck(e) {
 				g_CURRENT_LOGIN_USER_ID = parseInt(resolve[0]['pk_id']);
 
 				if(parseInt(resolve[0]['change_password']) === 1) {
-					//path for instant passwod change/update.
+					loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
+					console.log("Must update password.");
 				}
 
-				getCompaniesPromise().then(function(resolve) {
+				if(getCompanies()) {
+					loadPage('nav', g_NAV);
+				}
+				/*getCompaniesPromise().then(function(resolve) {
 					console.log("getCompaniesPromise:Success");
 					loadPage('nav', g_NAV);
 				}).catch(function(reject) {
 					console.log("reject:", reject);
 				}).finally(function() {
 					console.log("Moving On.");
-				});
+				});*/
 				closeDialogLogin();
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin and/or Active';

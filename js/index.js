@@ -80,6 +80,18 @@ function pageCheck(param_page) {
 	}
 }
 
+function getCompanies() {
+	getCompaniesPromise().then(function(resolve) {
+		console.log("getCompaniesPromise:Success");
+		//loadPage('nav', g_NAV);
+	}).catch(function(reject) {
+		console.log("reject:", reject);
+	}).finally(function() {
+		console.log("Moving On.");
+	});
+	return true;
+}
+
 function buildCompanyDropdown(param_element) {
 	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
 	for(i = 0; i < g_COMPANIES.length; i++) {
