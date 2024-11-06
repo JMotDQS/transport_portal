@@ -58,6 +58,14 @@
 	color: #ffffff;
 }
 
+.dialog-error {
+	display: none;
+	font-size: var(--half_rem);
+}
+.dialog-error-show {
+	display: block;
+}
+
 /*******************
 Dialog buttons
 *******************/

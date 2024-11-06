@@ -8,10 +8,10 @@ function userLoginCheck(e) {
 		if(resolve.length == 0) {
 			document.getElementById('dialog-login-error').textContent = 'email/password do not match for admin user';
 			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
-			document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
+			document.getElementById('dialog-login-error').classList.add('dialog-error-show');
 		} else {
 			if(parseInt(resolve[0]['is_admin']) === 1 && parseInt(resolve[0]['is_active']) === 1) {
-				document.getElementById('dialog-login-error').classList.remove('dialog-login-error-show');
+				document.getElementById('dialog-login-error').classList.remove('dialog-error-show');
 				feedBackColoring(document.getElementById('dialog-login-error'));
 				document.getElementById('dialog-login-error').textContent = '';
 				g_CURRENT_LOGIN_USER_ID = parseInt(resolve[0]['pk_id']);
@@ -32,7 +32,7 @@ function userLoginCheck(e) {
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin and/or Active';
 				feedBackColoring(document.getElementById('dialog-login-error'), 'red');
-				document.getElementById('dialog-login-error').classList.add('dialog-login-error-show');
+				document.getElementById('dialog-login-error').classList.add('dialog-error-show');
 			}
 		}
 

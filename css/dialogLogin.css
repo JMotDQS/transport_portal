@@ -1,7 +1,0 @@
-.dialog-login-error {
-	display: none;
-	font-size: var(--half_rem);
-}
-.dialog-login-error-show {
-	display: block;
-}
