@@ -78,7 +78,7 @@ function pageCheck(param_page) {
 				updatePasswordCheck();
 			});
 			document.getElementById('dialog-password-grid').addEventListener('keydown', (event) => {
-				if(event.key === 'Enter') {
+				if(event.key === 'Enter' && !document.getElementById('dialog-form-button').disabled) {
 					updatePasswordCheck();
 				}
 			});

@@ -18,7 +18,6 @@ function userLoginCheck(e) {
 
 				if(parseInt(resolve[0]['change_password']) === 1) {
 					loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
-					console.log("Must update password.");
 				}
 
 				/*if(getCompanies()) {
