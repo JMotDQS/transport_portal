@@ -105,7 +105,6 @@ function getCompanies() {
 	}).finally(function() {
 		console.log("Moving On.");
 	});
-	return true;
 }
 
 function buildCompanyDropdown(param_element) {
