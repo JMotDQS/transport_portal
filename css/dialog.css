@@ -25,6 +25,7 @@
 .dialog-grid > p {
     font-style: italic;
     margin-block-end: var(--half-rem);
+	text-align: center;
 }
 
 .dialog-grid-gap {

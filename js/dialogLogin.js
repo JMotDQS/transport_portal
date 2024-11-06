@@ -21,9 +21,9 @@ function userLoginCheck(e) {
 					console.log("Must update password.");
 				}
 
-				if(getCompanies()) {
+				/*if(getCompanies()) {
 					loadPage('nav', g_NAV);
-				}
+				}*/
 				/*getCompaniesPromise().then(function(resolve) {
 					console.log("getCompaniesPromise:Success");
 					loadPage('nav', g_NAV);

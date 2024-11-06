@@ -3,11 +3,13 @@ const userDialog = document.querySelector('.dialog_user');
 const loginDialog = document.querySelector('.dialog_login');
 const bulkAddUserDialog = document.querySelector('.dialog_bulk_add_user');
 const preventLoginClose = true;
-loginDialog.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape' && preventLoginClose) {
+
+function disableEscapeKeyDialogBehavior(event) {
+	if(event.key === 'Escape' && preventLoginClose) {
 		event.preventDefault();
 	}
-})
+}
+loginDialog.addEventListener('keydown', disableEscapeKeyDialogBehavior);
 const click_event = new CustomEvent('click');
 
 var g_TIMER;

@@ -69,14 +69,17 @@ function pageCheck(param_page) {
 			break;
 
 		case "passwordUpdate":
-			setKeyEvents(param_page, 'update_password');
-			setKeyEvents(param_page, 'update_password_conf');
+			setKeyEvents(param_page, 'update_password', .5);
+			setKeyEvents(param_page, 'update_password_conf', .5);
+			toggleDisabled('#dialog-form-button', true);
+			document.getElementById('dialog-form-button').classList.add('button-disabled');
+			document.getElementById('update_password').focus();
 			document.getElementById('dialog-form-button').addEventListener('click', () => {
-				//userLoginCheck();
+				updatePasswordCheck();
 			});
 			document.getElementById('dialog-password-grid').addEventListener('keydown', (event) => {
 				if(event.key === 'Enter') {
-					//userLoginCheck();
+					updatePasswordCheck();
 				}
 			});
 			break;

@@ -41,17 +41,24 @@ function keyUpEvent(e) {
 				var pw = document.getElementById('update_password').value;
 				var pwc = document.getElementById('update_password_conf').value;
 
-				if(pw === pwc) {
-					feedBackColoring(document.getElementById('dialog-login-error'), 'green');
-					document.getElementById('dialog-login-error').value = 'Passwords match!';
-					document.getElementById('dialog-login-error').classList.add('dialog-error-show');
+				if(pw === pwc && pw != '' && pwc != '') {
+					feedBackColoring(document.getElementById('dialog-password-error'), 'green');
+					document.getElementById('dialog-password-error').textContent = 'Passwords match!';
+					document.getElementById('dialog-password-error').classList.add('dialog-error-show');
+					toggleDisabled('#dialog-form-button', false);
+					document.getElementById('dialog-form-button').classList.remove('button-disabled');
+				} else if(pw == '' && pwc == '') {
+					document.getElementById('dialog-password-error').textContent = '';
+					document.getElementById('dialog-password-error').classList.remove('dialog-error-show');
+					toggleDisabled('#dialog-form-button', true);
+					document.getElementById('dialog-form-button').classList.add('button-disabled');
 				} else {
-					feedBackColoring(document.getElementById('dialog-login-error'), 'red');
-					document.getElementById('dialog-login-error').value = 'Passwords MUST match!';
-					document.getElementById('dialog-login-error').classList.add('dialog-error-show');
+					feedBackColoring(document.getElementById('dialog-password-error'), 'red');
+					document.getElementById('dialog-password-error').textContent = 'Passwords MUST match!';
+					document.getElementById('dialog-password-error').classList.add('dialog-error-show');
+					toggleDisabled('#dialog-form-button', true);
+					document.getElementById('dialog-form-button').classList.add('button-disabled');
 				}
-				//toggleDisabled('#' + e.currentTarget.id, true);
-				//validateLocation(e.data.inputEl, e.data.page);
 			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 			break;
 	}
