@@ -19,7 +19,7 @@
 						FROM asset_tracking
 						WHERE asset_id = '".$asso_array[$i]."'";
 			$res_track = sqlsrv_query($conn, $sql_track);
-			if (sqlsrv_has_rows($res_track)) {
+			if ($res_track) {
 				while ($row = sqlsrv_fetch_array($res_track, SQLSRV_FETCH_ASSOC)) {
 					$prev_location = $row['cur_location'];
 				}
