@@ -45,5 +45,5 @@ function userLoginCheck(e) {
 
 function closeDialogLogin() {
 	console.log("closeDialogLogin() called");
-	loginDialog.close();
+	LOGIN_DIALOG.close();
 }

@@ -8,11 +8,19 @@
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 	//if(mysqli_connect_error()) {//Use for PHP versions prior to 5.3
 	if ($conn) {// Use for PHP versions 5.3+
-		$sql = "UPDATE transport_users ";
+		$sql = "UPDATE transport_users";
 		if($_POST['field'] == 'Admin') {
-			$sql .= "SET is_admin = ".$_POST['newValue'];
+			$sql .= " SET is_admin = ".$_POST['newValue'];
+			if((int) $_POST['newValue'] == 0) {
+				$sql .= ", password = NULL, change_password = 0, email_address = NULL";
+			} else {
+				$sql .= ", password = ".$_POST['newPw'].", change_password = 1, email_address = ".$_POST['newEmail'];
+			}
 		} elseif($_POST['field'] == 'Active') {
-			$sql .= "SET is_active = ".$_POST['newValue'];
+			$sql .= " SET is_active = ".$_POST['newValue'];
+			if((int) $_POST['newValue'] == 0) {
+				$sql .= ", password = NULL, is_admin = ".(int) $_POST['newValue'].", change_password = 0, email_address = NULL";
+			}
 		}
 		$sql .= " WHERE pk_id = ".$_POST['indexId'];
 		$res = sqlsrv_query($conn, $sql);

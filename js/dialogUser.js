@@ -35,11 +35,11 @@ function openDialogUser(param_search_string = '') {
 		checkDialogUserInput();
 	});
 
-	userDialog.showModal();
+	USER_DIALOG.showModal();
 }
 
 function closeDialogUser() {
-	userDialog.close();
+	USER_DIALOG.close();
 	resetDialogUserForm()
 }
 

@@ -57,7 +57,7 @@ function pageCheck(param_page) {
 			break;
 
 		case "login":
-			loginDialog.showModal();
+			LOGIN_DIALOG.showModal();
 			document.getElementById('dialog-form-button').addEventListener('click', () => {
 				userLoginCheck();
 			});
@@ -84,6 +84,20 @@ function pageCheck(param_page) {
 			});
 			break;
 
+		case "addAdmin":
+			ADD_ADMIN_DIALOG.showModal();
+			setKeyEvents(param_page, 'add-admin_email', .5);
+			toggleDisabled('#dialog-form-button', true);
+			document.getElementById('dialog-form-button').addEventListener('click', () => {
+				//userLoginCheck();
+			});
+			document.getElementById('dialog-add-admin-grid').addEventListener('keydown', (event) => {
+				if(event.key === 'Enter') {
+					//userLoginCheck();
+				}
+			});
+			break;
+
 		case "bulkAddUser":
 			buildCompanyDropdown('dialog_bulk_add_user_company');
 			document.getElementById('dialog-bulk-add-user-button').addEventListener('click', () => {
@@ -91,7 +105,7 @@ function pageCheck(param_page) {
 			});
 
 			setdialogBulkAddUserEventListenerAssociations();
-			bulkAddUserDialog.showModal();
+			BULK_ADD_USER_DIALOG.showModal();
 			break;
 	}
 }
@@ -184,22 +198,32 @@ function sliderClicked(e, param_copy) {
 		$('#active-label_' + e).removeClass('user-inactive');
 		$('#active-label_' + e).html('Is ' + param_copy);
 		temp_value = 1;
+
+		if(param_copy == 'Admin') {
+			// open update admin dialog
+			loadDialog('addAdmin', g_DIALOG, 'dialog_add_admin');
+		}
 	} else {
 		$('#active-label_' + e).addClass('user-inactive');
 		$('#active-label_' + e).html('Not ' + param_copy);
 		temp_value = 0;
 	}
+	console.log("temp_value:", temp_value);
+	console.log("param_copy:", param_copy);
 
-	sliderUpdateRecordPromise('sliderUpdateUser', temp_id, temp_field, temp_value).then(function(resolve) {
-		userSearch(click_event);
+	/*sliderUpdateRecordPromise('sliderUpdateUser', temp_id, temp_field, temp_value).then(function(resolve) {
+		userSearch(CLICK_EVENT);
 	}).catch(function(reject) {
 		//console.log("Search Loaded!");
 	}).finally(function() {
 		//console.log("Fresh Search.");
-	});
+	});*/
 }
 
 function toggleDisabled(param_ele, param_disabled) {
+	console.log('toggleDisabled() called');
+	console.log('param_ele:', param_ele);
+	console.log('param_disabled:', param_disabled);
     $(param_ele).prop('disabled', param_disabled);
 }
 function toggleDisplay(param_ele, param_class, param_flag) {

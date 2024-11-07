@@ -144,7 +144,7 @@ function addUserPromise(param_file) {
 
 			success: function (data) {
 				$('#nav-search-field').val(data);
-				userSearch(click_event);
+				userSearch(CLICK_EVENT);
 				resolve(true);
 			},
 

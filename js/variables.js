@@ -1,16 +1,19 @@
 /***** Global Use Variables */
-const userDialog = document.querySelector('.dialog_user');
-const loginDialog = document.querySelector('.dialog_login');
-const bulkAddUserDialog = document.querySelector('.dialog_bulk_add_user');
-const preventLoginClose = true;
+const USER_DIALOG = document.querySelector('.dialog_user');
+const LOGIN_DIALOG = document.querySelector('.dialog_login');
+const ADD_ADMIN_DIALOG = document.querySelector('.dialog_add_admin');
+const BULK_ADD_USER_DIALOG = document.querySelector('.dialog_bulk_add_user');
+const PREVENT_LOGIN_CLOSE = true;
+const DEFAULT_PASSWORD = 'P@ssw0rd';
 
 function disableEscapeKeyDialogBehavior(event) {
-	if(event.key === 'Escape' && preventLoginClose) {
+	if(event.key === 'Escape' && PREVENT_LOGIN_CLOSE) {
 		event.preventDefault();
 	}
 }
-loginDialog.addEventListener('keydown', disableEscapeKeyDialogBehavior);
-const click_event = new CustomEvent('click');
+LOGIN_DIALOG.addEventListener('keydown', disableEscapeKeyDialogBehavior);
+ADD_ADMIN_DIALOG.addEventListener('keydown', disableEscapeKeyDialogBehavior);
+const CLICK_EVENT = new CustomEvent('click');
 
 var g_TIMER;
 var g_KEY_RESET_TIMER;

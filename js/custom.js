@@ -8,6 +8,9 @@ function keyPressEvent(e) {
 
 		case 'passwordUpdate':
 			break;
+
+		case 'addAdmin':
+			break;
 	}
 }
 function keyUpEvent(e) {
@@ -56,6 +59,20 @@ function keyUpEvent(e) {
 					feedBackColoring(document.getElementById('dialog-password-error'), 'red');
 					document.getElementById('dialog-password-error').textContent = 'Passwords MUST match!';
 					document.getElementById('dialog-password-error').classList.add('dialog-error-show');
+					toggleDisabled('#dialog-form-button', true);
+					document.getElementById('dialog-form-button').classList.add('button-disabled');
+				}
+			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
+			break;
+
+		case 'addAdmin':
+			g_TIMER = window.setTimeout(() => {
+				var email = document.getElementById('add-admin_email').value;
+
+				if(email.length > 0) {
+					toggleDisabled('#dialog-form-button', false);
+					document.getElementById('dialog-form-button').classList.remove('button-disabled');
+				} else {
 					toggleDisabled('#dialog-form-button', true);
 					document.getElementById('dialog-form-button').classList.add('button-disabled');
 				}

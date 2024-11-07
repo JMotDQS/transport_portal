@@ -31,6 +31,7 @@
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>
+		<dialog id="dialog_add_admin" class="g_dialog dialog_add_admin"></dialog>
 		<dialog id="dialog_bulk_add_user" class="g_dialog dialog_bulk_add_user"></dialog>
 
 	<!-- JQuery CDN -->
