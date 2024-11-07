@@ -21,7 +21,6 @@ function userSearch(e) {
 		$('#app').html('Searching...');
 
 		userSearchPromise('userSearch', dataCleanUp($('#nav-search-field').val())).then(function(resolve) {
-			console.log("userSearchPromise:Success");
 			temp_html = '';
 			
 			/*** If search result is empty ***/

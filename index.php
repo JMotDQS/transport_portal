@@ -50,6 +50,7 @@
 		<script src="js/reports.js"></script>
 		<script src="js/dialogUser.js"></script>
 		<script src="js/dialogLogin.js"></script>
+		<script src="js/dialogAddAdmin.js"></script>
 		<script src="js/dialogUpdatePassword.js"></script>
 		<script src="js/dialogBulkAddUser.js"></script>
 	</body>

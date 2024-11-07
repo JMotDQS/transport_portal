@@ -14,7 +14,7 @@
 			if((int) $_POST['newValue'] == 0) {
 				$sql .= ", password = NULL, change_password = 0, email_address = NULL";
 			} else {
-				$sql .= ", password = ".$_POST['newPw'].", change_password = 1, email_address = ".$_POST['newEmail'];
+				$sql .= ", is_active = 1, password = '".$_POST['newPw']."', change_password = 1, email_address = '".$_POST['newEmail']."'";
 			}
 		} elseif($_POST['field'] == 'Active') {
 			$sql .= " SET is_active = ".$_POST['newValue'];

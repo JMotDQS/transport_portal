@@ -66,7 +66,6 @@ function updatePasswordCheckPromise(param_file, param_pw, param_user_id) {
 	Set company array Promises Start
 ********************************************************/
 function getCompaniesPromise() {
-	console.log("getCompaniesPromise() called");
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/getCompanies.php",
@@ -164,7 +163,7 @@ function addUserPromise(param_file) {
 /********************************************************
 	Slider Update User Promises Start
 ********************************************************/
-function sliderUpdateRecordPromise(param_file, param_index, param_field, param_value) {
+function sliderUpdateRecordPromise(param_file, param_index, param_field, param_value, param_email, param_pw) {
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",
@@ -174,7 +173,9 @@ function sliderUpdateRecordPromise(param_file, param_index, param_field, param_v
 			data: {
 				'indexId': param_index,
 				'field': param_field,
-				'newValue': param_value
+				'newValue': param_value,
+				'newEmail': param_email,
+				'newPw': param_pw
 			},
 
 			success: function (data) {
@@ -198,8 +199,6 @@ function sliderUpdateRecordPromise(param_file, param_index, param_field, param_v
 	Validate Badge Promises Start
 ********************************************************/
 function validateLocationPromise(param_file, param_badge) {
-	console.log("param_badge:", param_badge);
-
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",
@@ -231,7 +230,6 @@ function validateLocationPromise(param_file, param_badge) {
 	Record Association Promises Start
 ********************************************************/
 function recordAssociationPromise(param_file) {
-
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",
@@ -264,7 +262,6 @@ function recordAssociationPromise(param_file) {
 	Reporting Promises Start
 ********************************************************/
 function reportingPromise(param_file) {
-
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",

@@ -3,8 +3,6 @@ function userLoginCheck(e) {
 	var userPW = dataCleanUp($('#login_password').val());
 
 	userLoginCheckPromise('userLoginCheck', userEmail, userPW).then(function(resolve) {
-		console.log("userLoginCheckPromise:Success");
-
 		if(resolve.length == 0) {
 			document.getElementById('dialog-login-error').textContent = 'email/password do not match for admin user';
 			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
@@ -20,7 +18,6 @@ function userLoginCheck(e) {
 					loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
 				} else {
 					getCompaniesPromise().then(function(resolve) {
-						console.log("getCompaniesPromise:Success");
 						loadPage('nav', g_NAV);
 						closeDialogLogin();
 					}).catch(function(reject) {
@@ -44,6 +41,5 @@ function userLoginCheck(e) {
 }
 
 function closeDialogLogin() {
-	console.log("closeDialogLogin() called");
 	LOGIN_DIALOG.close();
 }

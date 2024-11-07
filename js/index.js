@@ -23,7 +23,7 @@ function loadPage(param_template, param_element = 'app') {
 		});
 	}
 }
-function loadDialog(param_template, param_template_dir, param_load_ele) {
+function loadDialog(param_template, param_template_dir, param_load_ele, param_user_id = 0) {
 	var temp_dir = "templates/" + param_template_dir + "/";
 	if (param_template != '') {
 		temp_dir += param_template + ".html?nc=" + (Math.random() * 1000000);
@@ -32,7 +32,7 @@ function loadDialog(param_template, param_template_dir, param_load_ele) {
 			function(responseTxt, statusTxt, xhr) {
 				switch(statusTxt) {
 					case "success":
-						pageCheck(param_template);
+						pageCheck(param_template, param_user_id);
 						break;
 
 					case "error":
@@ -41,7 +41,7 @@ function loadDialog(param_template, param_template_dir, param_load_ele) {
 		});
 	}
 }
-function pageCheck(param_page) {
+function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 
 	switch(param_page) {
@@ -85,17 +85,19 @@ function pageCheck(param_page) {
 			break;
 
 		case "addAdmin":
-			//setKeyEvents(param_page, 'add-admin_email', .5);
+			setKeyEvents(param_page, 'add-admin_email', .5);
 			toggleDisabled('#dialog-add-admin-form-button', true);
 			document.getElementById('dialog-add-admin-form-button').classList.add('button-disabled');
-			/*document.getElementById('dialog-add-admin-form-button').addEventListener('click', () => {
+			document.getElementById('dialog-add-admin-form-button').addEventListener('click', () => {
 				//userLoginCheck();
+				validateEmail(param_user_id);
 			});
 			document.getElementById('dialog-add-admin-grid').addEventListener('keydown', (event) => {
 				if(event.key === 'Enter') {
 					//userLoginCheck();
+					validateEmail(param_user_id);
 				}
-			});*/
+			});
 			ADD_ADMIN_DIALOG.showModal();
 			break;
 
@@ -200,15 +202,15 @@ function sliderClicked(e, param_copy) {
 
 		if(param_copy == 'Admin') {
 			// open update admin dialog
-			loadDialog('addAdmin', g_DIALOG, 'dialog_add_admin');
+			loadDialog('addAdmin', g_DIALOG, 'dialog_add_admin', temp_id);
 		}
 	} else {
 		$('#active-label_' + e).addClass('user-inactive');
 		$('#active-label_' + e).html('Not ' + param_copy);
 		temp_value = 0;
+
+		sliderUpdateRecord('sliderUpdateUser', temp_id, temp_field, temp_value);
 	}
-	console.log("temp_value:", temp_value);
-	console.log("param_copy:", param_copy);
 
 	/*sliderUpdateRecordPromise('sliderUpdateUser', temp_id, temp_field, temp_value).then(function(resolve) {
 		userSearch(CLICK_EVENT);
@@ -220,9 +222,6 @@ function sliderClicked(e, param_copy) {
 }
 
 function toggleDisabled(param_ele, param_disabled) {
-	console.log('toggleDisabled() called');
-	console.log('param_ele:', param_ele);
-	console.log('param_disabled:', param_disabled);
     $(param_ele).prop('disabled', param_disabled);
 }
 function toggleDisplay(param_ele, param_class, param_flag) {
