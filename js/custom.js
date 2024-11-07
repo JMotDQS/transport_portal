@@ -48,19 +48,19 @@ function keyUpEvent(e) {
 					feedBackColoring(document.getElementById('dialog-password-error'), 'green');
 					document.getElementById('dialog-password-error').textContent = 'Passwords match!';
 					document.getElementById('dialog-password-error').classList.add('dialog-error-show');
-					toggleDisabled('#dialog-form-button', false);
-					document.getElementById('dialog-form-button').classList.remove('button-disabled');
+					toggleDisabled('#dialog-password-update-form-button', false);
+					document.getElementById('dialog-password-update-form-button').classList.remove('button-disabled');
 				} else if(pw == '' && pwc == '') {
 					document.getElementById('dialog-password-error').textContent = '';
 					document.getElementById('dialog-password-error').classList.remove('dialog-error-show');
-					toggleDisabled('#dialog-form-button', true);
-					document.getElementById('dialog-form-button').classList.add('button-disabled');
+					toggleDisabled('#dialog-password-update-form-button', true);
+					document.getElementById('dialog-password-update-form-button').classList.add('button-disabled');
 				} else {
 					feedBackColoring(document.getElementById('dialog-password-error'), 'red');
 					document.getElementById('dialog-password-error').textContent = 'Passwords MUST match!';
 					document.getElementById('dialog-password-error').classList.add('dialog-error-show');
-					toggleDisabled('#dialog-form-button', true);
-					document.getElementById('dialog-form-button').classList.add('button-disabled');
+					toggleDisabled('#dialog-password-update-form-button', true);
+					document.getElementById('dialog-password-update-form-button').classList.add('button-disabled');
 				}
 			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 			break;
@@ -70,11 +70,11 @@ function keyUpEvent(e) {
 				var email = document.getElementById('add-admin_email').value;
 
 				if(email.length > 0) {
-					toggleDisabled('#dialog-form-button', false);
-					document.getElementById('dialog-form-button').classList.remove('button-disabled');
+					toggleDisabled('#dialog-add-admin-form-button', false);
+					document.getElementById('dialog-add-admin-form-button').classList.remove('button-disabled');
 				} else {
-					toggleDisabled('#dialog-form-button', true);
-					document.getElementById('dialog-form-button').classList.add('button-disabled');
+					toggleDisabled('#dialog-add-admin-form-button', true);
+					document.getElementById('dialog-add-admin-form-button').classList.add('button-disabled');
 				}
 			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 			break;

@@ -58,7 +58,7 @@ function pageCheck(param_page) {
 
 		case "login":
 			LOGIN_DIALOG.showModal();
-			document.getElementById('dialog-form-button').addEventListener('click', () => {
+			document.getElementById('dialog-login-form-button').addEventListener('click', () => {
 				userLoginCheck();
 			});
 			document.getElementById('dialog-login-grid').addEventListener('keydown', (event) => {
@@ -71,31 +71,32 @@ function pageCheck(param_page) {
 		case "passwordUpdate":
 			setKeyEvents(param_page, 'update_password', .5);
 			setKeyEvents(param_page, 'update_password_conf', .5);
-			toggleDisabled('#dialog-form-button', true);
-			document.getElementById('dialog-form-button').classList.add('button-disabled');
+			toggleDisabled('#dialog-password-update-form-button', true);
+			document.getElementById('dialog-password-update-form-button').classList.add('button-disabled');
 			document.getElementById('update_password').focus();
-			document.getElementById('dialog-form-button').addEventListener('click', () => {
+			document.getElementById('dialog-password-update-form-button').addEventListener('click', () => {
 				updatePasswordCheck();
 			});
 			document.getElementById('dialog-password-grid').addEventListener('keydown', (event) => {
-				if(event.key === 'Enter' && !checkIfDisabled('dialog-form-button')) {
+				if(event.key === 'Enter' && !checkIfDisabled('dialog-password-update-form-button')) {
 					updatePasswordCheck();
 				}
 			});
 			break;
 
 		case "addAdmin":
-			ADD_ADMIN_DIALOG.showModal();
-			setKeyEvents(param_page, 'add-admin_email', .5);
-			toggleDisabled('#dialog-form-button', true);
-			document.getElementById('dialog-form-button').addEventListener('click', () => {
+			//setKeyEvents(param_page, 'add-admin_email', .5);
+			toggleDisabled('#dialog-add-admin-form-button', true);
+			document.getElementById('dialog-add-admin-form-button').classList.add('button-disabled');
+			/*document.getElementById('dialog-add-admin-form-button').addEventListener('click', () => {
 				//userLoginCheck();
 			});
 			document.getElementById('dialog-add-admin-grid').addEventListener('keydown', (event) => {
 				if(event.key === 'Enter') {
 					//userLoginCheck();
 				}
-			});
+			});*/
+			ADD_ADMIN_DIALOG.showModal();
 			break;
 
 		case "bulkAddUser":
@@ -189,11 +190,9 @@ function sliderSet(param_id, param_copy) {
 
 function sliderClicked(e, param_copy) {
 	e.preventDefault;
-	console.log("e:", e);
 	let temp_id = parseInt(e.slice(e.indexOf('_') + 1));
 	let temp_field = param_copy;
 	let temp_value;
-	console.log("temp_id:", temp_id);
 	if($('#' + e).is(':checked')) {
 		$('#active-label_' + e).removeClass('user-inactive');
 		$('#active-label_' + e).html('Is ' + param_copy);
