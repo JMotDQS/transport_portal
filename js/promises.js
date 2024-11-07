@@ -139,7 +139,7 @@ function addUserPromise(param_file) {
 			data: {
 				'firstName': dataCleanUp($('#dialog_user_first_name').val()),
 				'lastName': dataCleanUp($('#dialog_user_last_name').val()),
-				'companyId': $('#dialog_user_company').val()
+				'abbName': $('#dialog_user_company').val()
 			},
 
 			success: function (data) {

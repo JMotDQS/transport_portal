@@ -4,6 +4,7 @@
 	$return_array = [];
 	$badge_array = [];
 	$comp_abb = '';
+	$comp_id = 0;
 	$temp_badge_num;
 	$temp_badge_num_new;
 	$new_badge_num = '';
@@ -13,13 +14,14 @@
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 	//if(mysqli_connect_error()) {//Use for PHP versions prior to 5.3
 	if ($conn) {// Use for PHP versions 5.3+
-		$sql_comp_abb = "SELECT abb_name
+		$sql_comp_abb = "SELECT pk_id, abb_name
 						FROM transport_companies
-						WHERE pk_id = ".$_POST['companyId'];
+						WHERE abb_name = '".$_POST['abbName']."'";
 		$res = sqlsrv_query($conn, $sql_comp_abb);
-		if (sqlsrv_has_rows($res)) {
+		if ($res) {
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				$comp_abb = $row['abb_name'];
+				$comp_id = $row['pk_id'];
 			}
 		}
 
@@ -28,7 +30,7 @@
 					WHERE badge_id LIKE '".$comp_abb."%'
 					ORDER BY badge_id DESC";
 		$res = sqlsrv_query($conn, $sql_badge);
-		if (sqlsrv_has_rows($res)) {
+		if ($res) {
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($badge_array, $row);
 			}
@@ -44,7 +46,7 @@
 
 		$sql = "INSERT INTO transport_users
 					(created_date, badge_id, first_name, last_name, fk_company_pk_id)
-				VALUES (GETDATE(), '".$new_badge_num."', '".$_POST['firstName']."', '".$_POST['lastName']."', ".$_POST['companyId'].")";
+				VALUES (GETDATE(), '".$new_badge_num."', '".$_POST['firstName']."', '".$_POST['lastName']."', ".$comp_id.")";
 		$res = sqlsrv_query($conn, $sql);
 	} else {
 		die("Connect Error (".mysqli_connect_errno().") ".mysqli_connect_error());

@@ -110,7 +110,7 @@ function getCompanies() {
 function buildCompanyDropdown(param_element) {
 	var temp_html = `<option selected="true" disabled="disabled" value="">Please Choose Company</option>`;
 	for(i = 0; i < g_COMPANIES.length; i++) {
-		temp_html += `<option value="${g_COMPANIES[i]['abb_name']}">${g_COMPANIES[i]['company_name']}</option>`
+		temp_html += `<option value="${g_COMPANIES[i]['abb_name']}" data-compId=${g_COMPANIES[i]['pk_id']}>${g_COMPANIES[i]['company_name']}</option>`
 	}
 	$('#' + param_element).html(temp_html);
 }
