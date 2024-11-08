@@ -141,13 +141,13 @@ function userSearch(e) {
 }
 
 function printUser(param_obj) {
-    console.log("param_obj:", param_obj);
-    console.log("param_obj.id:", param_obj.id);
+    //console.log("param_obj:", param_obj);
+    //console.log("param_obj.id:", param_obj.id);
     var temp_array = param_obj.id.split('_');
     var selected_user_id = parseInt(temp_array[(temp_array.length - 1)]);
-    console.log("selected_user_id:", selected_user_id);
+    //console.log("selected_user_id:", selected_user_id);
 
-    var print_firstName = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['first_name'];
+    /*var print_firstName = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['first_name'];
     var print_lastName = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['last_name'];
     var print_badgeId = g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['badge_id'];
     console.log("first_name:", print_firstName);
@@ -158,5 +158,11 @@ function printUser(param_obj) {
 		'first_name': print_firstName,
 		'last_name': print_lastName,
 		'badge_id': print_badgeId
+	}*/
+
+	g_PRINT_USER_OBJ = {
+		'first_name': g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['first_name'],
+		'last_name': g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['last_name'],
+		'badge_id': g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['badge_id']
 	}
 }
