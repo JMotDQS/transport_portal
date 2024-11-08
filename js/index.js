@@ -89,12 +89,10 @@ function pageCheck(param_page, param_user_id) {
 			toggleDisabled('#dialog-add-admin-form-button', true);
 			document.getElementById('dialog-add-admin-form-button').classList.add('button-disabled');
 			document.getElementById('dialog-add-admin-form-button').addEventListener('click', () => {
-				//userLoginCheck();
 				validateEmail(param_user_id);
 			});
 			document.getElementById('dialog-add-admin-grid').addEventListener('keydown', (event) => {
 				if(event.key === 'Enter') {
-					//userLoginCheck();
 					validateEmail(param_user_id);
 				}
 			});
@@ -201,7 +199,6 @@ function sliderClicked(e, param_copy) {
 		temp_value = 1;
 
 		if(param_copy == 'Admin') {
-			// open update admin dialog
 			loadDialog('addAdmin', g_DIALOG, 'dialog_add_admin', temp_id);
 		} else {
 			sliderUpdateRecord('sliderUpdateUser', temp_id, temp_field, temp_value);
@@ -213,14 +210,6 @@ function sliderClicked(e, param_copy) {
 
 		sliderUpdateRecord('sliderUpdateUser', temp_id, temp_field, temp_value);
 	}
-
-	/*sliderUpdateRecordPromise('sliderUpdateUser', temp_id, temp_field, temp_value).then(function(resolve) {
-		userSearch(CLICK_EVENT);
-	}).catch(function(reject) {
-		//console.log("Search Loaded!");
-	}).finally(function() {
-		//console.log("Fresh Search.");
-	});*/
 }
 
 function toggleDisabled(param_ele, param_disabled) {
