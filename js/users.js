@@ -165,4 +165,5 @@ function printUser(param_obj) {
 		'last_name': g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['last_name'],
 		'badge_id': g_USER_SEARCH[parseInt($('#' + param_obj.id).data('index'))]['badge_id']
 	}
+	console.log("g_PRINT_USER_OBJ:", g_PRINT_USER_OBJ);
 }
