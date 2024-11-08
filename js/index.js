@@ -203,6 +203,8 @@ function sliderClicked(e, param_copy) {
 		if(param_copy == 'Admin') {
 			// open update admin dialog
 			loadDialog('addAdmin', g_DIALOG, 'dialog_add_admin', temp_id);
+		} else {
+			sliderUpdateRecord('sliderUpdateUser', temp_id, temp_field, temp_value);
 		}
 	} else {
 		$('#active-label_' + e).addClass('user-inactive');
