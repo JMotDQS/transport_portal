@@ -153,4 +153,10 @@ function printUser(param_obj) {
     console.log("first_name:", print_firstName);
     console.log("last_name:", print_lastName);
     console.log("badgeId:", print_badgeId);
+
+	g_PRINT_USER_OBJ = {
+		'first_name': print_firstName,
+		'last_name': print_lastName,
+		'badge_id': print_badgeId
+	}
 }
