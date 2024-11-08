@@ -185,15 +185,6 @@
 		}
 
 		foreach ($his_tracking_array as $pair) {
-			if($pair['first_name'] == '') {
-				$pair['first_name'] = 'NULL';
-			}
-			if($pair['last_name'] == '') {
-				$pair['last_name'] = 'NULL';
-			}
-			if($pair['company_name'] == '') {
-				$pair['company_name'] = 'NULL';
-			}
 			fputcsv($fp, $pair);
 		}
 		fclose($fp);
