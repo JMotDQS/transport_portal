@@ -3,11 +3,20 @@
 	require_once("config.php");
 
 	$return_array = [];
-	$serverName = $host."\\sqlexpress";
 
-	// Since UID and PWD are not specified in the $connectionInfo array,
-	// The connection will be attempted using Windows Authentication.
-	$connectionInfo = array("Database"=>$db);
+	$serverName = "";
+	$connectionInfo = array();
+	if ($connType == "SQLServer")
+	{
+		$serverName = $host;
+		$connectionInfo = array("UID"=>$user, "PWD"=>$pass, "Database"=>$db);
+	}
+	else
+	{
+		$serverName = $host."\\sqlexpress";
+		$connectionInfo = array("Database"=>$db);
+	}
+
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 
 	if ($conn) {

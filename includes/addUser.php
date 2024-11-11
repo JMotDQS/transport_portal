@@ -8,9 +8,20 @@
 	$temp_badge_num;
 	$temp_badge_num_new;
 	$new_badge_num = '';
-	$serverName = $host."\\sqlexpress";
+	
+	$serverName = "";
+	$connectionInfo = array();
+	if ($connType == "SQLServer")
+	{
+		$serverName = $host;
+		$connectionInfo = array("UID"=>$user, "PWD"=>$pass, "Database"=>$db);
+	}
+	else
+	{
+		$serverName = $host."\\sqlexpress";
+		$connectionInfo = array("Database"=>$db);
+	}
 
-	$connectionInfo = array("Database"=>$db);
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 	//if(mysqli_connect_error()) {//Use for PHP versions prior to 5.3
 	if ($conn) {// Use for PHP versions 5.3+

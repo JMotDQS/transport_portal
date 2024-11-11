@@ -2,11 +2,23 @@
 	include("config.php");
 
 	$return_array = [];
-	$serverName = $host."\\sqlexpress";
 
-	$connectionInfo = array("Database"=>$db);
+	$serverName = "";
+	$connectionInfo = array();
+	if ($connType == "SQLServer")
+	{
+		$serverName = $host;
+		$connectionInfo = array("UID"=>$user, "PWD"=>$pass, "Database"=>$db);
+	}
+	else
+	{
+		$serverName = $host."\\sqlexpress";
+		$connectionInfo = array("Database"=>$db);
+	}
+
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 	//if(mysqli_connect_error()) {//Use for PHP versions prior to 5.3
+
 	if ($conn) {// Use for PHP versions 5.3+
 		$sql = "UPDATE transport_users";
 		if($_POST['field'] == 'Admin') {

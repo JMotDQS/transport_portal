@@ -31,11 +31,19 @@
 							INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id";
 	*/
 
-    $serverName = $host."\\sqlexpress";
+    $serverName = "";
+	$connectionInfo = array();
+	if ($connType == "SQLServer")
+	{
+		$serverName = $host;
+		$connectionInfo = array("UID"=>$user, "PWD"=>$pass, "Database"=>$db);
+	}
+	else
+	{
+		$serverName = $host."\\sqlexpress";
+		$connectionInfo = array("Database"=>$db);
+	}
 
-	// Since UID and PWD are not specified in the $connectionInfo array,
-	// The connection will be attempted using Windows Authentication.
-	$connectionInfo = array("Database"=>$db);
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 
 	if ($conn) {
