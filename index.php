@@ -21,13 +21,13 @@
 
 	<body id="home">
 		<header>
-			<img id="logo-header" class="nav-logo" src="images/DQS_logo.svg" data-page='kms'>
+			<img id="logo-header" class="nav-logo" src="images/DQS_logo.svg">
 
 			<nav id="nav"></nav>
 		</header>
 		
 		<div id="app"></div>
-		<div class="search-results"></div>
+		<div id="search-results" class="search-results"></div>
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>

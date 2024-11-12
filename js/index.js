@@ -1,6 +1,24 @@
 $(document).ready(function() {
-	loadDialog('login', g_DIALOG, 'dialog_login');
+	$('.nav-logo').on('click', function() {
+		refreshApp();
+	});
+	refreshApp();
 });
+
+function refreshApp() {
+	g_CURRENT_LOGIN_USER_ID = 0;
+	g_USER_SEARCH = [];
+	g_NO_SEARCH_RESULTS = '';
+	g_COMPANIES = [];
+	g_NEW_LOCATION = '';
+	g_ASSOCIATE_ITEMS = '';
+	g_PRINT_USER_OBJ = {};
+
+	document.getElementById('nav').textContent = '';
+	document.getElementById('app').textContent = '';
+	document.getElementById('search-results').textContent = '';
+	loadDialog('login', g_DIALOG, 'dialog_login');
+}
 
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "templates/" + param_element + "/";

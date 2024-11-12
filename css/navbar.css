@@ -16,6 +16,7 @@ header {
 .nav-logo {
 	margin: 0;
 	height: calc(var(--navbar-height) * .75);
+	cursor: pointer;
 }
 
 .nav-links li {
