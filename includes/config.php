@@ -7,6 +7,7 @@ localhost use
 	$user = "";
 	$pass = "";
 	$db = "transport_portal";
+	$connType = "";
 
 /*********************
 Azure use
