@@ -40,7 +40,6 @@ function setDialogBulkAddUserButton() {
 function sendBulkAddUserData() {
 	console.log('sendBulkAddUserData() called');
 	feedBackColoring('#upload-feedback');
-	//const apiEndpoint = 'https://hot-stars-repeat.loca.lt/Transport/UploadTransportUsersFile';
 	const apiEndpoint = 'https://identity-api-stg.dqstaff.com/Transport/UploadTransportUsersFile';
 	const csvFile = document.getElementById('dialog_bullk_add_user_file').files[0];
 	const companyCode = document.getElementById('dialog_bulk_add_user_company').value;
@@ -57,7 +56,6 @@ function sendBulkAddUserData() {
 	fetch(apiEndpoint, {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'multipart/form-data',
 			'SessionKey': 'E3DDA602-C414-41B7-9E4B-73A4EDD896A3',
 			'ApplicationId': '33E591F9-F7C1-4EC3-8B5A-D48FEEDFA9FA'
 		},
