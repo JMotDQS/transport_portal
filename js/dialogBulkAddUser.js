@@ -64,10 +64,18 @@ function sendBulkAddUserData() {
 	.then(response => response.json())
 	.then(data => {
 		console.log(data);
-		alert('File uploaded successfully!');
 		$('#upload-progress').html('');
 		feedBackColoring('#upload-feedback', 'green');
 		$('#upload-feedback').html('File uploaded successfully!');
+
+		clearTimer(g_TIMER);
+		console.log("Timer Starting");
+		g_TIMER = window.setTimeout(() => {
+			console.log("Timer Stopped");
+			feedBackColoring('#upload-feedback');
+			$('#upload-feedback').html('');
+			BULK_ADD_USER_DIALOG.close();
+		}, (g_TIMEOUT_VAL * 4));
 	})
 	.catch(error => {
 		console.error(error);
