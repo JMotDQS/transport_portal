@@ -156,38 +156,42 @@
 	}
 
 	$close_success = sqlsrv_close($conn);
-	if ($close_success) {
-		$fp = fopen('php://output', 'w');
-		$fp = fopen('../../'.$trackingReport, 'w');
+	if(count($tracking_array) == 0) {
+		echo json_encode(false);
+	} else {
+		if ($close_success) {
+			$fp = fopen('php://output', 'w');
+			$fp = fopen('../../'.$trackingReport, 'w');
 
-		if (isset($headings)) {
-			fputcsv($fp, $headings, ',', '"');
-		}
-
-		foreach ($tracking_array as $pair) {
-			if($pair['updated_date'] == '') {
-				$pair['updated_date'] = 'NULL';
+			if (isset($headings)) {
+				fputcsv($fp, $headings, ',', '"');
 			}
-			if($pair['updated_time'] == '') {
-				$pair['updated_time'] = 'NULL';
+
+			foreach ($tracking_array as $pair) {
+				if($pair['updated_date'] == '') {
+					$pair['updated_date'] = 'NULL';
+				}
+				if($pair['updated_time'] == '') {
+					$pair['updated_time'] = 'NULL';
+				}
+				fputcsv($fp, $pair);
 			}
-			fputcsv($fp, $pair);
+			fclose($fp);
+
+			$fp = fopen('php://output', 'w');
+			$fp = fopen('../../'.$hisTrackingReport, 'w');
+
+			if (isset($his_headings)) {
+				fputcsv($fp, $his_headings, ',', '"');
+			}
+
+			foreach ($his_tracking_array as $pair) {
+				fputcsv($fp, $pair);
+			}
+			fclose($fp);
+
+			echo json_encode(true);
 		}
-		fclose($fp);
-
-		$fp = fopen('php://output', 'w');
-		$fp = fopen('../../'.$hisTrackingReport, 'w');
-
-		if (isset($his_headings)) {
-			fputcsv($fp, $his_headings, ',', '"');
-		}
-
-		foreach ($his_tracking_array as $pair) {
-			fputcsv($fp, $pair);
-		}
-		fclose($fp);
-
-		echo json_encode(true);
 	}
 
 ?>

@@ -3,8 +3,11 @@ function generateReports() {
 
 	reportingPromise('reporting').then(
 		function(resolve) {
-			console.log("reportingPromise:Success");
-			alert("Reports created");
+			if(resolve) {
+				alert("Reports created");
+			} else {
+				alert("Tracking data NOT found");
+			}
 		}
 	).catch(
 		function(reject) {
