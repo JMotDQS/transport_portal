@@ -69,9 +69,7 @@ function sendBulkAddUserData() {
 		$('#upload-feedback').html('File uploaded successfully!');
 
 		clearTimer(g_TIMER);
-		console.log("Timer Starting");
 		g_TIMER = window.setTimeout(() => {
-			console.log("Timer Stopped");
 			feedBackColoring('#upload-feedback');
 			$('#upload-feedback').html('');
 			BULK_ADD_USER_DIALOG.close();
