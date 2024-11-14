@@ -13,5 +13,7 @@
 
 
 #dialog_user_asso_button {
+	padding: var(--quarter-rem);
+	border-radius: var(--half-rem);
 	cursor: pointer;
 }
