@@ -25,6 +25,9 @@
 				WHERE first_name LIKE '%".$_POST['searchString']."%'
 					OR last_name LIKE '%".$_POST['searchString']."%'
 					OR badge LIKE '%".$_POST['searchString']."%'";
+		echo json_encode($sql);
+		die();
+		
 		$res = sqlsrv_query($conn, $sql);
 		if (sqlsrv_has_rows($res)) {
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {

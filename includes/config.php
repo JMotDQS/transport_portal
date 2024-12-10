@@ -3,21 +3,21 @@
 /*********************
 localhost use
 *********************/
-	$host = "localhost";
+	/*$host = "localhost";
 	$user = "";
 	$pass = "";
 	$db = "transport_portal";
-	$connType = "";
+	$connType = "";*/
 
 /*********************
 Azure use
 *********************/
-	/*
+	
 	$host = "dqstaff.database.windows.net";
 	$user = "dqs-transport-user";
 	$pass = "dL2GgQcsQ5";
 	$db = "DQS_Transport";
 	$connType = "SQLServer";
-	*/
+	
 
 ?>

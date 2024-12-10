@@ -96,6 +96,7 @@ function getCompaniesPromise() {
 	User Search Promises Start
 ********************************************************/
 function userSearchPromise(param_file, param_search_string) {
+	console.log("param_search_string:", param_search_string);
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/" + param_file + ".php",
@@ -107,6 +108,7 @@ function userSearchPromise(param_file, param_search_string) {
 			},
 
 			success: function (data) {
+				console.log("data:", data);
 				g_USER_SEARCH = [];
 				g_USER_SEARCH = data;
 				resolve(true);
