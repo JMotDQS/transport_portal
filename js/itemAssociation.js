@@ -47,13 +47,14 @@ function recordAssociation() {
 		function(resolve) {
 			console.log("Success.");
 			if(resolve) {
+				document.getElementById('search-results').textContent = '';
 				feedBackColoring(document.getElementById('app'), 'green');
 				document.getElementById('app').textContent = 'Asset(s) Associated';
 				clearTimer(g_TIMER);
 				g_TIMER = window.setTimeout(() => {
 					feedBackColoring(document.getElementById('app'));
 					document.getElementById('app').textContent = '';
-				}, (g_TIMEOUT_VAL));
+				}, (g_TIMEOUT_VAL * 3));
 			} else {
 				feedBackColoring(document.getElementById('app'), 'red');
 				document.getElementById('app').textContent = 'An error occured';

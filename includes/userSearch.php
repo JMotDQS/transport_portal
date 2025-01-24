@@ -24,12 +24,12 @@
 				FROM transport_users
 				WHERE first_name LIKE '%".$_POST['searchString']."%'
 					OR last_name LIKE '%".$_POST['searchString']."%'
-					OR badge LIKE '%".$_POST['searchString']."%'";
-		echo json_encode($sql);
-		die();
+					OR badge_id LIKE '%".$_POST['searchString']."%'";
+		//echo json_encode($sql);
+		//die();
 		
 		$res = sqlsrv_query($conn, $sql);
-		if (sqlsrv_has_rows($res)) {
+		if ($res) {
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
 				array_push($return_array, $row);
 			}
