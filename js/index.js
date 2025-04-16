@@ -17,7 +17,8 @@ function refreshApp() {
 	document.getElementById('nav').textContent = '';
 	document.getElementById('app').textContent = '';
 	document.getElementById('search-results').textContent = '';
-	loadDialog('login', g_DIALOG, 'dialog_login');
+	//loadDialog('login', g_DIALOG, 'dialog_login');
+	loadPage('nav', g_NAV);
 }
 
 function loadPage(param_template, param_element = 'app') {

@@ -113,11 +113,11 @@
 		$sql = "SELECT ath.pk_id,
 					FORMAT(ath.created_date, 'yyyy-mm-dd') AS created_date,
 					FORMAT(ath.created_date, 'hh:mm:ss') AS created_time,
-					ath.asset_id, ath.cur_location AS current_location, ath.prev_location AS previous_location,
-					tu.first_name, tu.last_name, tc.company_name
+					ath.asset_id, ath.cur_location AS current_location, ath.prev_location AS previous_location/*,
+					tu.first_name, tu.last_name, tc.company_name*/
 				FROM asset_tracking_historical AS ath
-					INNER JOIN transport_users AS tu ON tu.badge_id = ath.cur_location
-					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id
+					/*INNER JOIN transport_users AS tu ON tu.badge_id = ath.cur_location
+					INNER JOIN transport_companies AS tc ON tc.pk_id = tu.fk_company_pk_id*/
 				WHERE ath.cur_location NOT LIKE 'MB%'
 				ORDER BY ath.cur_location";
 		$res = sqlsrv_query($conn, $sql);
