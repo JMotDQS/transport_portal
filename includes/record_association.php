@@ -27,29 +27,29 @@
 		$asso_count = count($asso_array);
 		for($i = 0; $i < $asso_count; $i++) {
 
-			$sql_track = "SELECT asset_id, prev_location, cur_location
-						FROM asset_tracking
-						WHERE asset_id = '".$asso_array[$i]."'";
+			$sql_track = "SELECT AssetId, PrevLocation, CurLocation
+							FROM AssetTracking
+							WHERE AssetId = '".$asso_array[$i]."'";
 			$res_track = sqlsrv_query($conn, $sql_track);
 			if (sqlsrv_has_rows($res_track)) {
 				while ($row = sqlsrv_fetch_array($res_track, SQLSRV_FETCH_ASSOC)) {
-					$prev_location = $row['cur_location'];
+					$prev_location = $row['CurLocation'];
 				}
 
-				$sql_track = "UPDATE asset_tracking
-							SET updated_date = GETDATE(), prev_location = '".$prev_location."', cur_location = '".$_POST['new_location']."'
-							WHERE asset_id = '".$asso_array[$i]."'";
+				$sql_track = "UPDATE AssetTracking
+							SET Updated = GETDATE(), PrevLocation = '".$prev_location."', CurLocation = '".$_POST['new_location']."'
+							WHERE AssetId = '".$asso_array[$i]."'";
 				$res_track = sqlsrv_query($conn, $sql_track);
 			} else {
 				$prev_location = 'NULL';
-				$sql_track = "INSERT INTO asset_tracking
-								(created_date, updated_date, asset_id, prev_location, cur_location)
+				$sql_track = "INSERT INTO AssetTracking
+								(Created, Updated, AssetId, PrevLocation, CurLocation)
 							VALUES (GETDATE(), NULL, '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."')";
 				$res_track = sqlsrv_query($conn, $sql_track);
 			}
 
-			$sql_track_his = "INSERT INTO asset_tracking_historical
-								(created_date, asset_id, prev_location, cur_location)
+			$sql_track_his = "INSERT INTO AssetTrackingHistorical
+								(Created, AssetId, PrevLocation, CurLocation)
 							VALUES (GETDATE(), '".$asso_array[$i]."', '".$prev_location."', '".$_POST['new_location']."')";
 			$res_track_his = sqlsrv_query($conn, $sql_track_his);
 
